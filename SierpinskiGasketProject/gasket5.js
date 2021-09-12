@@ -51,6 +51,10 @@ function init() {
     render();
 };
 
+/*
+    create triangles and divide the triangles recursively
+    divided triangles are used in the final webpage
+ */
 function triangle( a, b, c ) {
     points.push( a, b, c );
 }
@@ -74,6 +78,9 @@ function divideTriangle( a, b, c, count ) {
     }
 }
 
+/*
+    load the window and render the triangles in the window
+ */
 window.onload = init;
 
 function render() {
