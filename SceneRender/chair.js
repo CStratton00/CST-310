@@ -33,17 +33,34 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
+    var xAjust1 = 0.15;
+    var xAjust2 = -0.8;
+    var scalar = 0.9;
+
+    //
+    // chair 1
+    //
     // arm rests
-    colorCube([0,0,0],     [0.2,0.9,0.7]);
-    colorCube([0.8,0,0],   [0.2,0.9,0.7]);
-
+    colorCube([0.04+xAjust1,0,0],     [0.2*scalar,0.9*scalar,0.7*scalar]);
+    colorCube([0.76+xAjust1,0,0],   [0.2*scalar,0.9*scalar,0.7*scalar]);
     // bottom cushions
-    colorCube([0.4,-0.2,0],   [0.6,0.2,0.7]);
-    colorCube([0.4,0,0], [0.6,0.2,0.7]);
-
+    colorCube([0.4+xAjust1,-0.16,0],   [0.6*scalar,0.2*scalar,0.7*scalar]);
+    colorCube([0.4+xAjust1,0,0], [0.6*scalar,0.2*scalar,0.7*scalar]);
     // back rest
-    colorCube([0.4,0.25,-0.25], [0.6,0.5,0.2]);
+    colorCube([0.4+xAjust1,0.25,-0.225], [0.6*scalar,0.5*scalar,0.2*scalar]);
 
+
+    //
+    // chair 2
+    //
+    // arm rests
+    colorCube([0.04+xAjust2,0,0],     [0.2*scalar,0.9*scalar,0.7*scalar]);
+    colorCube([0.76+xAjust2,0,0],   [0.2*scalar,0.9*scalar,0.7*scalar]);
+    // bottom cushions
+    colorCube([0.4+xAjust2,-0.16,0],   [0.6*scalar,0.2*scalar,0.7*scalar]);
+    colorCube([0.4+xAjust2,0,0], [0.6*scalar,0.2*scalar,0.7*scalar]);
+    // back rest
+    colorCube([0.4+xAjust2,0.25,-0.225], [0.6*scalar,0.5*scalar,0.2*scalar]);
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -94,10 +111,10 @@ function quad(a, b, c, d, pos, scale)
         [ 0.71, 0.4, 0.21, 1.0 ],  // arm color
         [ 1.0, 0.65, 0.43, 1.0 ],  // front
         [ 0.71, 0.4, 0.21, 1.0 ],  // right
-        [ 0.0, 1.0, 0.0, 1.0 ],  // bottom
-        [ 0.0, 0.0, 1.0, 1.0 ],  // back
-        [ 1.0, 0.0, 1.0, 1.0 ],  // left
-        [ 0.0, 1.0, 1.0, 1.0 ],  // top
+        [ 0.0, 0.0, 0.0, 1.0 ],  // bottom
+        [ 0.63, 0.32, 0.17, 1.0 ],  // back
+        [ 0.9, 0.55, 0.38, 1.0 ],  // left
+        [ 1.0, 0.7, 0.5, 1.0 ],  // top
         [ 1.0, 1.0, 1.0, 1.0 ]   // white
     ];
 
