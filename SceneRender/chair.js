@@ -19,13 +19,15 @@ var colors = [];
 
 var near    = 0.3;
 var far     = 3.0;
-var radius  = 4.0;
+var radius  = 2.5;
 var theta   = 0.0;
 var phi     = 0.0;
-var dr      = 5.0 * Math.PI/180.0;
+var dr      = 5.0 * Math.PI / 180.0;
 
 var  fovy   = 45.0;     // Field-of-view in Y direction angle (in degrees)
 var  aspect = 1.0;      // Viewport aspect ratio
+
+var camera  = 1;         // Choose a view
 
 var modelViewMatrix, projectionMatrix;
 var modelViewMatrixLoc, projectionMatrixLoc;
@@ -131,6 +133,18 @@ window.onload = function init()
         fovy = event.target.value;
     };
 
+    document.getElementById("Button1").onclick = function(event) {
+        camera = 1;
+    };
+
+    document.getElementById("Button2").onclick = function(event) {
+        camera = 2;
+    };
+
+    document.getElementById("Button3").onclick = function(event) {
+        camera = 3;
+    };
+
     render();
 }
 
@@ -192,8 +206,22 @@ function render()
 
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    eye = vec3( radius * Math.sin( theta ) * Math.cos( phi ),
-        radius * Math.sin( theta ) * Math.sin( phi ), radius * Math.cos( theta ) );
+    switch ( camera ) {
+        case 1:
+            eye = vec3(radius * Math.sin(theta) * Math.cos(phi),
+                radius * Math.sin(theta) * Math.sin(phi), radius * Math.cos(theta));
+            break;
+        case 2:
+            eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi),
+                radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
+            break;
+        case 3:
+            eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi + 0.6),
+                radius * Math.sin(theta + 5.5) * Math.sin(phi + 0.6), radius * Math.cos(theta + 0.5));
+            break;
+
+    }
+
     modelViewMatrix = lookAt( eye, at , up );
     projectionMatrix = perspective( fovy, aspect, near, far );
 
