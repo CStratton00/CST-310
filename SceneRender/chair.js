@@ -17,14 +17,21 @@ const cubeVerts = [
 var points = [];
 var colors = [];
 
-var xAxis = 0;
-var yAxis = 1;
-var zAxis = 2;
+var near    = 0.3;
+var far     = 3.0;
+var radius  = 4.0;
+var theta   = 0.0;
+var phi     = 0.0;
+var dr      = 5.0 * Math.PI/180.0;
 
-var axis = 0;
-var theta = [ 0, 0, 0 ];
+var  fovy   = 45.0;     // Field-of-view in Y direction angle (in degrees)
+var  aspect = 1.0;      // Viewport aspect ratio
 
-var thetaLoc;
+var modelViewMatrix, projectionMatrix;
+var modelViewMatrixLoc, projectionMatrixLoc;
+var eye;
+const at = vec3( 0.0, 0.0, 0.0 );
+const up = vec3( 0.0, 1.0, 0.0 );
 
 window.onload = function init()
 {
@@ -33,6 +40,8 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
+    aspect = canvas.width/canvas.height;
+
     var xAjust1 = 0.15;
     var xAjust2 = -0.8;
     var scalar = 0.9;
@@ -40,27 +49,33 @@ window.onload = function init()
     //
     // chair 1
     //
+
     // arm rests
-    colorCube([0.04+xAjust1,0,0],     [0.2*scalar,0.9*scalar,0.7*scalar]);
-    colorCube([0.76+xAjust1,0,0],   [0.2*scalar,0.9*scalar,0.7*scalar]);
+    colorCube([0.04 + xAjust1, 0, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar]);
+    colorCube([0.76 + xAjust1, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
+
     // bottom cushions
-    colorCube([0.4+xAjust1,-0.16,0],   [0.6*scalar,0.2*scalar,0.7*scalar]);
-    colorCube([0.4+xAjust1,0,0], [0.6*scalar,0.2*scalar,0.7*scalar]);
+    colorCube([0.4 + xAjust1, -0.16, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
+    colorCube([0.4 + xAjust1, 0, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
+
     // back rest
-    colorCube([0.4+xAjust1,0.25,-0.225], [0.6*scalar,0.5*scalar,0.2*scalar]);
+    colorCube([0.4 + xAjust1, 0.25, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar]);
 
 
     //
     // chair 2
     //
+
     // arm rests
-    colorCube([0.04+xAjust2,0,0],     [0.2*scalar,0.9*scalar,0.7*scalar]);
-    colorCube([0.76+xAjust2,0,0],   [0.2*scalar,0.9*scalar,0.7*scalar]);
+    colorCube([0.04 + xAjust2, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
+    colorCube([0.76 + xAjust2, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
+
     // bottom cushions
-    colorCube([0.4+xAjust2,-0.16,0],   [0.6*scalar,0.2*scalar,0.7*scalar]);
-    colorCube([0.4+xAjust2,0,0], [0.6*scalar,0.2*scalar,0.7*scalar]);
+    colorCube([0.4 + xAjust2, -0.16, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
+    colorCube([0.4 + xAjust2, 0, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
+
     // back rest
-    colorCube([0.4+xAjust2,0.25,-0.225], [0.6*scalar,0.5*scalar,0.2*scalar]);
+    colorCube([0.4 + xAjust2, 0.25, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar]);
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -85,12 +100,36 @@ window.onload = function init()
     gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
-
     var vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
-    thetaLoc = gl.getUniformLocation(program, "theta");
+    modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
+    projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
+
+// sliders for viewing parameters
+
+    document.getElementById("zFarSlider").onchange = function(event) {
+        far = event.target.value;
+    };
+    document.getElementById("zNearSlider").onchange = function(event) {
+        near = event.target.value;
+    };
+    document.getElementById("radiusSlider").onchange = function(event) {
+        radius = event.target.value;
+    };
+    document.getElementById("thetaSlider").onchange = function(event) {
+        theta = event.target.value* Math.PI/180.0;
+    };
+    document.getElementById("phiSlider").onchange = function(event) {
+        phi = event.target.value* Math.PI/180.0;
+    };
+    document.getElementById("aspectSlider").onchange = function(event) {
+        aspect = event.target.value;
+    };
+    document.getElementById("fovSlider").onchange = function(event) {
+        fovy = event.target.value;
+    };
 
     render();
 }
@@ -108,14 +147,14 @@ function colorCube(pos, scale)
 function quad(a, b, c, d, pos, scale)
 {
     var vertexColors = [
-        [ 0.71, 0.4, 0.21, 1.0 ],  // arm color
-        [ 1.0, 0.65, 0.43, 1.0 ],  // front
-        [ 0.71, 0.4, 0.21, 1.0 ],  // right
-        [ 0.0, 0.0, 0.0, 1.0 ],  // bottom
+        [ 0.71, 0.4, 0.21, 1.0 ],   // arm color
+        [ 1.0, 0.65, 0.43, 1.0 ],   // front
+        [ 0.71, 0.4, 0.21, 1.0 ],   // right
+        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
         [ 0.63, 0.32, 0.17, 1.0 ],  // back
-        [ 0.9, 0.55, 0.38, 1.0 ],  // left
-        [ 1.0, 0.7, 0.5, 1.0 ],  // top
-        [ 1.0, 1.0, 1.0, 1.0 ]   // white
+        [ 0.9, 0.55, 0.38, 1.0 ],   // left
+        [ 1.0, 0.7, 0.5, 1.0 ],     // top
+        [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
 
     // We need to parition the quad into two triangles in order for
@@ -150,17 +189,18 @@ function quad(a, b, c, d, pos, scale)
 
 function render()
 {
+
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    // theta[axis] += 0;
+    eye = vec3( radius * Math.sin( theta ) * Math.cos( phi ),
+        radius * Math.sin( theta ) * Math.sin( phi ), radius * Math.cos( theta ) );
+    modelViewMatrix = lookAt( eye, at , up );
+    projectionMatrix = perspective( fovy, aspect, near, far );
 
-    theta[0] = document.getElementById('xRotation').value;
-    theta[1] = document.getElementById('yRotation').value;
-    theta[2] = document.getElementById('zRotation').value;
-
-    gl.uniform3fv(thetaLoc, theta);
+    gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten( modelViewMatrix ) );
+    gl.uniformMatrix4fv( projectionMatrixLoc, false, flatten( projectionMatrix ) );
 
     gl.drawArrays( gl.TRIANGLES, 0, points.length );
-
     requestAnimFrame( render );
+
 }
