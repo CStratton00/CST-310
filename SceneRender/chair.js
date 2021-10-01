@@ -17,14 +17,14 @@ const cubeVerts = [
 var points = [];
 var colors = [];
 
-var near    = 0.3;
-var far     = 3.0;
+var near    = 0.01;
+var far     = 6.0;
 var radius  = 2.5;
 var theta   = 0.0;
 var phi     = 0.0;
 var dr      = 5.0 * Math.PI / 180.0;
 
-var  fovy   = 45.0;     // Field-of-view in Y direction angle (in degrees)
+var  fovy   = 70.0;     // Field-of-view in Y direction angle (in degrees)
 var  aspect = 1.0;      // Viewport aspect ratio
 
 var camera  = 1;         // Choose a view
