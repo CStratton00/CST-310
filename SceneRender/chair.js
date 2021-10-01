@@ -109,29 +109,7 @@ window.onload = function init()
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
 
-// sliders for viewing parameters
-
-    document.getElementById("zFarSlider").onchange = function(event) {
-        far = event.target.value;
-    };
-    document.getElementById("zNearSlider").onchange = function(event) {
-        near = event.target.value;
-    };
-    document.getElementById("radiusSlider").onchange = function(event) {
-        radius = event.target.value;
-    };
-    document.getElementById("thetaSlider").onchange = function(event) {
-        theta = event.target.value* Math.PI/180.0;
-    };
-    document.getElementById("phiSlider").onchange = function(event) {
-        phi = event.target.value* Math.PI/180.0;
-    };
-    document.getElementById("aspectSlider").onchange = function(event) {
-        aspect = event.target.value;
-    };
-    document.getElementById("fovSlider").onchange = function(event) {
-        fovy = event.target.value;
-    };
+// buttons for viewing parameters
 
     document.getElementById("Button1").onclick = function(event) {
         camera = 1;
