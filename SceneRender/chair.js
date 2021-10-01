@@ -109,29 +109,7 @@ window.onload = function init()
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
 
-// sliders for viewing parameters
-
-    document.getElementById("zFarSlider").onchange = function(event) {
-        far = event.target.value;
-    };
-    document.getElementById("zNearSlider").onchange = function(event) {
-        near = event.target.value;
-    };
-    document.getElementById("radiusSlider").onchange = function(event) {
-        radius = event.target.value;
-    };
-    document.getElementById("thetaSlider").onchange = function(event) {
-        theta = event.target.value* Math.PI/180.0;
-    };
-    document.getElementById("phiSlider").onchange = function(event) {
-        phi = event.target.value* Math.PI/180.0;
-    };
-    document.getElementById("aspectSlider").onchange = function(event) {
-        aspect = event.target.value;
-    };
-    document.getElementById("fovSlider").onchange = function(event) {
-        fovy = event.target.value;
-    };
+// buttons for viewing parameters
 
     document.getElementById("Button1").onclick = function(event) {
         camera = 1;
@@ -208,16 +186,14 @@ function render()
 
     switch ( camera ) {
         case 1:
-            eye = vec3(radius * Math.sin(theta) * Math.cos(phi),
-                radius * Math.sin(theta) * Math.sin(phi), radius * Math.cos(theta));
+            eye = vec3(radius * Math.sin(theta) * Math.cos(phi), radius * Math.sin(theta + .5) * Math.sin(phi), radius * Math.cos(theta));
+            theta += Math.PI / 720;
             break;
         case 2:
-            eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi),
-                radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
+            eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi), radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
             break;
         case 3:
-            eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi + 0.6),
-                radius * Math.sin(theta + 5.5) * Math.sin(phi + 0.6), radius * Math.cos(theta + 0.5));
+            eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi + 0.6), radius * Math.sin(theta + 5.5) * Math.sin(phi + 0.6), radius * Math.cos(theta + 0.5));
             break;
 
     }
