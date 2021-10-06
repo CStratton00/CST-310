@@ -8,13 +8,13 @@ var nColumns = 50;
 
 
 var data = new Array(nRows);
-for(var i =0; i<nRows; i++) data[i]=new Array(nColumns);
+for( var i = 0; i < nRows; i++ ) data[i] = new Array( nColumns );
 
-for(var i=0; i<nRows; i++) {
-    var x = Math.PI*(4*i/nRows-2.0);
-    for(var j=0; j<nColumns; j++) {
-        var y = Math.PI*(4*j/nRows-2.0);
-        var r = Math.sqrt(x*x+y*y)
+for(var i = 0; i < nRows; i++) {
+    var x = Math.PI * (4 * i / nRows - 2.0);
+    for(var j = 0; j < nColumns; j++) {
+        var y = Math.PI * (4 * j / nRows - 2.0);
+        var r = Math.sqrt(x * x + y * y)
 
         // take care of 0/0 for r = 0
 
