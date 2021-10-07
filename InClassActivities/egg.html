@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html>
-
 
 <p> </p>
 <button id = "Button1">Increase Z</button>
@@ -28,9 +28,10 @@ attribute  vec4 vPosition;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 
-void main() 
-{
-    gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+void main()  {
+
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+
 } 
 </script>
 
@@ -38,27 +39,26 @@ void main()
 
 precision mediump float;
 
+uniform vec4 fColor;
 
+void main() {
 
-//uniform vec4 fColor;
+    gl_FragColor = fColor;
 
-void
-main()
-{
-    gl_FragColor = vec4(0.0, 00, 0.0, 1.0);
 }
+
 </script>
 
 <script type="text/javascript" src="../Common/webgl-utils.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MV.js"></script>
-<script type="text/javascript" src="hata.js"></script>
+<script type="text/javascript" src="egg.js"></script>
 
 <body>
 
 
 <canvas id="gl-canvas" width="512" height="512">
-Oops ... your browser doesn't support the HTML5 canvas element
+    Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 
 
