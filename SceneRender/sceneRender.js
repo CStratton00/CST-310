@@ -46,10 +46,15 @@ window.onload = function init()
 
     var chair1XAdj = 0.7;
     var chair2XAdj = -0.3;
-    var chair1YAdj = -0.425;
-    var chair2YAdj = -0.425;
-    var bookshelfXAdj = -2;
+    var chair1YAdj = -0.7;
+    var chair2YAdj = -0.7;
+    var bookshelfXAdj = -1.3;
+    var bookshelfYAdj = -0.25;
     var scalar = 0.9;
+
+    // walls
+    colorCube([-1.975, 0, 0], [0.05, 2, 2])
+    colorCube([1.975, 0, 0], [0.05, 2, 2])
 
     //
     // chair 1
@@ -87,19 +92,19 @@ window.onload = function init()
     //
 
     //back
-    colorCube([0 + bookshelfXAdj,0,0],     [0.7,1.5,0.1]);
+    colorCube([0 + bookshelfXAdj,0+ bookshelfYAdj,0],     [0.7,1.5,0.1]);
 
     // shelves
-    colorCube([0 + bookshelfXAdj,0.75,0.2], [0.7,0.05,0.5]);
-    colorCube([0 + bookshelfXAdj,0.45,0.2], [0.7,0.05,0.5]);
-    colorCube([0 + bookshelfXAdj,0.15,0.2], [0.7,0.05,0.5]);
-    colorCube([0 + bookshelfXAdj,-0.15,0.2], [0.7,0.05,0.5]);
-    colorCube([0 + bookshelfXAdj,-0.45,0.2], [0.7,0.05,0.5]);
-    colorCube([0 + bookshelfXAdj,-0.75,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,-0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,-0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
+    colorCube([0 + bookshelfXAdj,-0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5]);
 
     //sides
-    colorCube([-0.35 + bookshelfXAdj,-0.025,0.2], [0.05,1.6,0.5]);
-    colorCube([0.35 + bookshelfXAdj,-0.025,0.2], [0.05,1.6,0.5]);
+    colorCube([-0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5]);
+    colorCube([0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5]);
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -212,7 +217,7 @@ function render()
             //theta += Math.PI / 720;
             break;
         case 2:
-            eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi), radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
+            eye = vec3(radius * Math.sin(theta - 0.4) * Math.cos(phi), radius * Math.sin(theta - 0.4) * Math.sin(phi), radius * Math.cos(theta - 0.4));
             break;
         case 3:
             eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi + 0.6), radius * Math.sin(theta + 5.5) * Math.sin(phi + 0.6), radius * Math.cos(theta + 0.5));
