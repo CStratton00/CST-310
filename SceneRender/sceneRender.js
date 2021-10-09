@@ -14,6 +14,21 @@ const cubeVerts = [
     vec4(  0.5, -0.5, -0.5, 1.0 )
 ];
 
+function colors(color) {
+    var red = [
+        [ 0.71, 0.4, 0.21, 1.0 ],   // arm color
+        [ 1.0, 0.65, 0.43, 1.0 ],   // front
+        [ 0.71, 0.4, 0.21, 1.0 ],   // right
+        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
+        [ 0.63, 0.32, 0.17, 1.0 ],  // back
+        [ 0.9, 0.55, 0.38, 1.0 ],   // left
+        [ 1.0, 0.7, 0.5, 1.0 ],     // top
+        [ 1.0, 1.0, 1.0, 1.0 ]      // white
+    ];
+    
+}
+
+
 var points = [];
 var colors = [];
 
@@ -46,15 +61,18 @@ window.onload = function init()
 
     var chair1XAdj = 0.7;
     var chair2XAdj = -0.3;
-    var chair1YAdj = -0.7;
-    var chair2YAdj = -0.7;
+    var chair1YAdj = -0.55;
+    var chair2YAdj = -0.55;
     var bookshelfXAdj = -1.3;
-    var bookshelfYAdj = -0.25;
+    var bookshelfYAdj = -0.15;
     var scalar = 0.9;
 
     // walls
-    colorCube([-1.975, 0, 0], [0.05, 2, 2])
-    colorCube([1.975, 0, 0], [0.05, 2, 2])
+    colorCubeWalls([-1.975, 0, 0.25], [0.05, 2, 1])
+    colorCubeWalls([1.975, 0, 0.25], [0.05, 2, 1])
+    colorCube([0, 0.975, 0.25], [4, 0.05, 1])
+    colorCube([0, -0.975, 0.25], [4, 0.05, 1])
+    colorCubeWalls([0, 0, -0.25], [4, 2, 0.02])
 
     //
     // chair 1
@@ -163,18 +181,19 @@ function colorCube(pos, scale)
     quad( 5, 4, 0, 1, pos, scale); //left
 }
 
+function colorCubeWalls(pos, scale)
+{
+    quad( 1, 0, 3, 2, pos, scale); //front
+    quad( 2, 3, 7, 6, pos, scale); //right side
+    quad( 3, 0, 4, 7, pos, scale); //bottom
+    quad( 6, 5, 1, 2, pos, scale); //top
+    quad( 4, 5, 6, 7, pos, scale); //back
+    quad( 5, 4, 0, 1, pos, scale); //left
+}
+
 function quad(a, b, c, d, pos, scale)
 {
-    var vertexColors = [
-        [ 0.71, 0.4, 0.21, 1.0 ],   // arm color
-        [ 1.0, 0.65, 0.43, 1.0 ],   // front
-        [ 0.71, 0.4, 0.21, 1.0 ],   // right
-        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
-        [ 0.63, 0.32, 0.17, 1.0 ],  // back
-        [ 0.9, 0.55, 0.38, 1.0 ],   // left
-        [ 1.0, 0.7, 0.5, 1.0 ],     // top
-        [ 1.0, 1.0, 1.0, 1.0 ]      // white
-    ];
+
 
     // We need to parition the quad into two triangles in order for
     // WebGL to be able to render it.  In this case, we create two
