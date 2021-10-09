@@ -16,7 +16,7 @@ const cubeVerts = [
 
 function colorSelect(color) {
 
-    var orange = [
+    var couch = [
         [ 0.71, 0.4, 0.21, 1.0 ],   // color
         [ 1.0, 0.65, 0.43, 1.0 ],   // front
         [ 0.71, 0.4, 0.21, 1.0 ],   // right
@@ -27,7 +27,7 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
 
-    var brown = [
+    var bookshelf = [
         [ 0.376, 0.2, 0.062, 1.0 ],   // color
         [ 0.819, 0.560, 0.360, 1.0 ],   // front
         [ 0.376, 0.2, 0.062, 1.0 ],   // right
@@ -38,7 +38,7 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
 
-    var black = [
+    var tv = [
         [ 0.71, 0.4, 0.21, 1.0 ],   // color
         [ 1.0, 0.65, 0.9, 1.0 ],   // front
         [ 0.71, 0.4, 0.9, 1.0 ],   // right
@@ -61,12 +61,12 @@ function colorSelect(color) {
     ];
 
     switch(color) {
-        case 'orange':
-            return orange
-        case 'brown':
-            return brown
-        case 'black':
-            return black
+        case 'couch':
+            return couch
+        case 'bookshelf':
+            return bookshelf
+        case 'tv':
+            return tv
         case 'room':
             return room
         default:
@@ -126,15 +126,15 @@ window.onload = function init() {
     //
 
     // arm rests
-    colorCube([0.04 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar], 'orange');
-    colorCube([0.76 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'orange');
+    colorCube([0.04 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar], 'couch');
+    colorCube([0.76 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
 
     // bottom cushions
-    colorCube([0.4 + chair1XAdj, -0.16 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'orange');
-    colorCube([0.4 + chair1XAdj, 0 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'orange');
+    colorCube([0.4 + chair1XAdj, -0.16 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.4 + chair1XAdj, 0 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
 
     // back rest
-    colorCube([0.4 + chair1XAdj, 0.25 + chair1YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'orange');
+    colorCube([0.4 + chair1XAdj, 0.25 + chair1YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'couch');
 
 
     //
@@ -142,34 +142,34 @@ window.onload = function init() {
     //
 
     // arm rests
-    colorCube([0.04 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'orange');
-    colorCube([0.76 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'orange');
+    colorCube([0.04 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.76 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
 
     // bottom cushions
-    colorCube([0.4 + chair2XAdj, -0.16 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'orange');
-    colorCube([0.4 + chair2XAdj, 0 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'orange');
+    colorCube([0.4 + chair2XAdj, -0.16 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.4 + chair2XAdj, 0 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
 
     // back rest
-    colorCube([0.4 + chair2XAdj, 0.25 + chair2YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'orange');
+    colorCube([0.4 + chair2XAdj, 0.25 + chair2YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'couch');
 
     //
     // Bookshelf
     //
 
     //back
-    colorCube([0 + bookshelfXAdj,0+ bookshelfYAdj,0], [0.7,1.5,0.1], 'brown');
+    colorCube([0 + bookshelfXAdj,0+ bookshelfYAdj,0], [0.7,1.5,0.1], 'bookshelf');
 
     // shelves
-    colorCube([0 + bookshelfXAdj,0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
-    colorCube([0 + bookshelfXAdj,0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
-    colorCube([0 + bookshelfXAdj,0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
-    colorCube([0 + bookshelfXAdj,-0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
-    colorCube([0 + bookshelfXAdj,-0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
-    colorCube([0 + bookshelfXAdj,-0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'brown');
+    colorCube([0 + bookshelfXAdj,0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
+    colorCube([0 + bookshelfXAdj,0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
+    colorCube([0 + bookshelfXAdj,0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
+    colorCube([0 + bookshelfXAdj,-0.15+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
+    colorCube([0 + bookshelfXAdj,-0.45+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
+    colorCube([0 + bookshelfXAdj,-0.75+ bookshelfYAdj,0.2], [0.7,0.05,0.5], 'bookshelf');
 
     //sides
-    colorCube([-0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'brown');
-    colorCube([0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'brown');
+    colorCube([-0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'bookshelf');
+    colorCube([0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'bookshelf');
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
