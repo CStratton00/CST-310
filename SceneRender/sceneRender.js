@@ -18,7 +18,7 @@ function colorSelect(color) {
 
     var couch = [
         [ 0.71, 0.4, 0.21, 1.0 ],   // color
-        [ 1.0, 0.65, 0.43, 1.0 ],   // front
+        [ 0.819, 0.560, 0.360, 1.0 ],  // front
         [ 0.71, 0.4, 0.21, 1.0 ],   // right
         [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
         [ 0.63, 0.32, 0.17, 1.0 ],  // back
@@ -26,12 +26,22 @@ function colorSelect(color) {
         [ 1.0, 0.7, 0.5, 1.0 ],     // top
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
+    var chair = [
+        [ 0.71, 0.4, 0.21, 1.0 ],   // color
+        [ 0.75, 0.35, 0.0, 1.0 ],   // front
+        [ 0.75, 0.35, 0.0, 1.0 ],   // right
+        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
+        [ 0.63, 0.32, 0.17, 1.0 ],  // back
+        [ 0.75, 0.35, 0.0, 1.0 ],   // left
+        [ 0.75, 0.35, 0.0, 1.0 ],     // top
+        [ 1.0, 1.0, 1.0, 1.0 ]      // white
+    ];
 
     var bookshelf = [
         [ 0.376, 0.2, 0.062, 1.0 ],   // color
         [ 0.819, 0.560, 0.360, 1.0 ],   // front
         [ 0.376, 0.2, 0.062, 1.0 ],   // right
-        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
+        [ 0.28, 0.15, 0.06, 1.0 ],    // bottom
         [ 0.63, 0.32, 0.17, 1.0 ],  // back
         [ 0.376, 0.2, 0.062, 1.0 ],   // left
         [ 1.0, 0.7, 0.5, 1.0 ],     // top
@@ -39,14 +49,14 @@ function colorSelect(color) {
     ];
 
     var tv = [
-        [ 0.71, 0.4, 0.21, 1.0 ],   // color
-        [ 1.0, 0.65, 0.9, 1.0 ],   // front
-        [ 0.71, 0.4, 0.9, 1.0 ],   // right
-        [ 0.0, 0.0, 0.9, 1.0 ],     // bottom
-        [ 0.63, 0.32, 0.17, 1.0 ],  // back
-        [ 0.9, 0.55, 0.38, 1.0 ],   // left
-        [ 1.0, 0.7, 0.5, 1.0 ],     // top
-        [ 1.0, 1.0, 1.0, 1.0 ]      // white
+        [ 0, 0, 0, 1.0 ],
+        [ 0.0, 0.0, 0.0, 1.0 ],     // front
+        [ 0.0, 0.0, 0.0, 1.0 ],     // right
+        [ 0.0, 0.0, 0.0, 1.0 ],           // bottom
+        [ 0.0, 0.0, 0.0, 1.0 ],     // back
+        [ 0.0, 0.0, 0.0, 1.0 ],     // left
+        [ 0.0, 0.0, 0.0, 1.0 ],     // top
+        [ 0, 0, 0, 1.0 ]
     ];
 
     var room = [
@@ -56,6 +66,16 @@ function colorSelect(color) {
         [ 0.627, 0.529, 0.450, 1.0 ],     // bottom
         [ 0.63, 0.32, 0.17, 1.0 ],  // back
         [ 0.847, 0.737, 0.650, 1.0 ],   // left
+        [ 0.149, 0.203, 0.270, 1.0 ],     // top
+        [ 1.0, 1.0, 1.0, 1.0 ]      // white
+    ];
+    var airvent = [
+        [ 0.71, 0.4, 0.21, 1.0 ],   // color
+        [ 1.0, 1.0, 1.0, 1.0 ],   // front
+        [ 1.0, 1.0, 1.0, 1.0 ],   // right
+        [ 0.5, 0.5, 0.5, 1.0 ],     // bottom
+        [ 0.63, 0.32, 0.17, 1.0 ],  // back
+        [ 1.0, 1.0, 1.0, 1.0 ],   // left
         [ 0.149, 0.203, 0.270, 1.0 ],     // top
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
@@ -69,6 +89,10 @@ function colorSelect(color) {
             return tv
         case 'room':
             return room
+        case 'chair':
+            return chair
+        case 'airvent':
+            return airvent
         default:
             return
     }
@@ -117,20 +141,26 @@ window.onload = function init() {
     // walls
     colorCubeWalls([-1.975, 0, 0.25], [0.05, 2, 1], 'room')
     colorCubeWalls([1.975, 0, 0.25], [0.05, 2, 1], 'room')
-    colorCube([0, 0.975, 0.25], [4, 0.05, 1], 'room')
-    colorCube([0, -0.975, 0.25], [4, 0.05, 1], 'room')
+    colorCube([0, 0.975, 0.25], [4, 0.05, 1], 'room')       // ceiling
+    colorCube([0, -0.975, 0.25], [4, 0.05, 1], 'room')      // floor
     colorCubeWalls([0, 0, -0.25], [4, 2, 0.02], 'room')
+
+    // TV
+    colorCube([0.61, 0.45, 0], [0.8, 0.45, 0.05], 'tv')
+
+    // air vent
+    colorCube([-1.0, 0.96, 0.4], [0.5, 0.05, 0.4], 'airvent')
 
     //
     // chair 1
     //
 
     // arm rests
-    colorCube([0.04 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar], 'couch');
-    colorCube([0.76 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.04 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar], 'chair');
+    colorCube([0.76 + chair1XAdj, 0 + chair1YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'chair');
 
     // bottom cushions
-    colorCube([0.4 + chair1XAdj, -0.16 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.4 + chair1XAdj, -0.16 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'chair');
     colorCube([0.4 + chair1XAdj, 0 + chair1YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
 
     // back rest
@@ -142,11 +172,11 @@ window.onload = function init() {
     //
 
     // arm rests
-    colorCube([0.04 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
-    colorCube([0.76 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.04 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'chair');
+    colorCube([0.76 + chair2XAdj, 0 + chair2YAdj, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar], 'chair');
 
     // bottom cushions
-    colorCube([0.4 + chair2XAdj, -0.16 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
+    colorCube([0.4 + chair2XAdj, -0.16 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'chair');
     colorCube([0.4 + chair2XAdj, 0 + chair2YAdj, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar], 'couch');
 
     // back rest
@@ -215,6 +245,9 @@ window.onload = function init() {
         camera = 3;
     };
 
+    document.getElementById("Button4").onclick = function(event) {
+        camera = 4;
+    };
     render();
 }
 
@@ -278,16 +311,17 @@ function render() {
 
     switch ( camera ) {
         case 1:
-            eye = vec3(radius * Math.sin(theta) * Math.cos(phi), radius * Math.sin(theta + .5) * Math.sin(phi), radius * Math.cos(theta));
-            //theta += Math.PI / 720;
+            eye = vec3(radius * Math.sin(theta) * Math.cos(phi), radius * Math.sin(theta + 0.5) * Math.sin(phi), radius * Math.cos(theta));
             break;
         case 2:
-            eye = vec3(radius * Math.sin(theta - 0.4) * Math.cos(phi), radius * Math.sin(theta - 0.4) * Math.sin(phi), radius * Math.cos(theta - 0.4));
+            eye = vec3(radius * Math.sin(theta - 0.6) * Math.cos(phi), radius * Math.sin(theta - 0.4) * Math.sin(phi+0.5), radius * Math.cos(theta - 0.6));
             break;
         case 3:
             eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi - 0.6), radius * Math.sin(theta + 5.5) * Math.sin(phi - 0.6), radius * Math.cos(theta + 0.5));
             break;
-
+        case 4:
+            eye = vec3(radius * Math.sin(theta + 1) * Math.cos(phi), radius * Math.sin(theta + 0.5) * Math.sin(phi), radius * Math.cos(theta+1));
+            break;
     }
 
     modelViewMatrix = lookAt( eye, at , up );
