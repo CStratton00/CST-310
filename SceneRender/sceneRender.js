@@ -131,7 +131,7 @@ window.onload = function init() {
     aspect = canvas.width/canvas.height;
 
     var chair1XAdj = 0.7;
-    var chair2XAdj = -0.3;
+    var chair2XAdj = -0.6;
     var chair1YAdj = -0.55;
     var chair2YAdj = -0.55;
     var bookshelfXAdj = -1.3;
@@ -146,7 +146,7 @@ window.onload = function init() {
     colorCubeWalls([0, 0, -0.25], [4, 2, 0.02], 'room')
 
     // TV
-    colorCube([0.61, 0.45, 0], [0.8, 0.45, 0.05], 'tv')
+    colorCube([0.41, 0.45, 0], [0.8, 0.45, 0.05], 'tv')
 
     // air vent
     colorCube([-1.0, 0.96, 0.4], [0.5, 0.05, 0.4], 'airvent')
