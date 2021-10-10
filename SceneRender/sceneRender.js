@@ -49,13 +49,46 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
 
-    var book = [
+    var book1 = [
         [ 0.376, 0.2, 0.062, 1.0 ],     // color
         [ 0.102, 0.537, 0.961, 1.0 ],   // front
         [ 0.490, 0.639, 0.745, 1.0 ],   // right
         [ 0.871, 0.843, 0.710, 1.0 ],   // bottom
         [ 0.871, 0.843, 0.710, 1.0 ],   // back
         [ 0.490, 0.639, 0.745, 1.0 ],   // left
+        [ 0.871, 0.843, 0.710, 1.0 ],   // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
+    var book2 = [
+        [ 0.376, 0.2, 0.062, 1.0 ],     // color
+        [ 0.294, 0.149, 0.145, 1.0 ],   // front
+        [ 0.573, 0.361, 0.353, 1.0 ],   // right
+        [ 0.871, 0.843, 0.710, 1.0 ],   // bottom
+        [ 0.871, 0.843, 0.710, 1.0 ],   // back
+        [ 0.573, 0.361, 0.353, 1.0 ],   // left
+        [ 0.871, 0.843, 0.710, 1.0 ],   // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
+    var book3 = [
+        [ 0.376, 0.2, 0.062, 1.0 ],     // color
+        [ 0.710, 0.263, 0.086, 1.0 ],   // front
+        [ 1.000, 0.608, 0.235, 1.0 ],   // right
+        [ 0.871, 0.843, 0.710, 1.0 ],   // bottom
+        [ 0.871, 0.843, 0.710, 1.0 ],   // back
+        [ 1.000, 0.608, 0.235, 1.0 ],   // left
+        [ 0.871, 0.843, 0.710, 1.0 ],   // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
+    var book4 = [
+        [ 0.376, 0.2, 0.062, 1.0 ],     // color
+        [ 0.412, 0.161, 0.835, 1.0 ],   // front
+        [ 0.553, 0.294, 0.984, 1.0 ],   // right
+        [ 0.871, 0.843, 0.710, 1.0 ],   // bottom
+        [ 0.871, 0.843, 0.710, 1.0 ],   // back
+        [ 0.553, 0.294, 0.984, 1.0 ],   // left
         [ 0.871, 0.843, 0.710, 1.0 ],   // top
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
@@ -142,8 +175,14 @@ function colorSelect(color) {
             return couch
         case 'bookshelf':
             return bookshelf
-        case 'book':
-            return book
+        case 'book1':
+            return book1
+        case 'book2':
+            return book2
+        case 'book3':
+            return book3
+        case 'book4':
+            return book4
         case 'tv':
             return tv
         case 'room':
@@ -292,11 +331,46 @@ window.onload = function init() {
     //
     // books
     //
-    colorCube([0 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
-    colorCube([0.07 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
-    colorCube([0.54 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
-    colorCube([0.02 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
-    colorCube([0.09 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
+
+    // top shelf
+    colorCube([0.00 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.07 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.14 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.21 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.54 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+
+    // second shelf
+    colorCube([0.54 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.29 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.22 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.00 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+
+    // third shelf
+    colorCube([0.02 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.09 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.16 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.23 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.30 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.37 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.44 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+
+    // fourth shelf
+    colorCube([0.12 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.19 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.26 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.33 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.40 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.47 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.54 + bookXAdj, -0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+
+    // bottom shelf
+    colorCube([0.02 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.09 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.16 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book1');
+    colorCube([0.23 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
+    colorCube([0.30 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book4');
+    colorCube([0.37 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
+    colorCube([0.44 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
