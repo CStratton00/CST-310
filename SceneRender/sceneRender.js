@@ -49,6 +49,17 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
 
+    var book = [
+        [ 0.376, 0.2, 0.062, 1.0 ],     // color
+        [ 0.102, 0.537, 0.961, 1.0 ],   // front
+        [ 0.490, 0.639, 0.745, 1.0 ],   // right
+        [ 0.871, 0.843, 0.710, 1.0 ],   // bottom
+        [ 0.871, 0.843, 0.710, 1.0 ],   // back
+        [ 0.490, 0.639, 0.745, 1.0 ],   // left
+        [ 0.871, 0.843, 0.710, 1.0 ],   // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
     var tv = [
         [ 0, 0, 0, 1.0 ],
         [ 0.0, 0.0, 0.0, 1.0 ],     // front
@@ -131,6 +142,8 @@ function colorSelect(color) {
             return couch
         case 'bookshelf':
             return bookshelf
+        case 'book':
+            return book
         case 'tv':
             return tv
         case 'room':
@@ -190,6 +203,8 @@ window.onload = function init() {
     var chair2YAdj = -0.55;
     var bookshelfXAdj = -1.3;
     var bookshelfYAdj = -0.15;
+    var bookXAdj = -1.58;
+    var bookYAdj = -0.03;
     var scalar = 0.9;
 
     // walls
@@ -273,6 +288,15 @@ window.onload = function init() {
     //sides
     colorCube([-0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'bookshelf');
     colorCube([0.35 + bookshelfXAdj,-0.025+ bookshelfYAdj,0.2], [0.05,1.6,0.5], 'bookshelf');
+
+    //
+    // books
+    //
+    colorCube([0 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
+    colorCube([0.07 + bookXAdj, 0.45 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
+    colorCube([0.54 + bookXAdj, 0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
+    colorCube([0.02 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
+    colorCube([0.09 + bookXAdj, -0.15 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book');
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
