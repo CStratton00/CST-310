@@ -93,6 +93,39 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
 
+    var thermoBase = [
+        [ 0.71, 0.4, 0.21, 1.0 ],       // color
+        [ 0.8, 0.8, 0.8, 1.0 ],         // front
+        [ 0.9, 0.9, 0.9, 1.0 ],         // right
+        [ 0.5, 0.5, 0.5, 1.0 ],         // bottom
+        [ 0.8, 0.8, 0.8, 1.0 ],         // back
+        [ 1.0, 1.0, 1.0, 1.0 ],         // left
+        [ 1.0, 1.0, 1.0, 1.0 ],         // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
+    var thermoScreen = [
+        [ 0.71, 0.4, 0.21, 1.0 ],       // color
+        [ 0.9, 0.9, 0.9, 1.0 ],         // front
+        [ 0, 0, 0, 1.0 ],               // right
+        [ 0.9, 0.9, 0.9, 1.0 ],         // bottom
+        [ 0.9, 0.9, 0.9, 1.0 ],         // back
+        [ 1.0, 1.0, 1.0, 1.0 ],         // left
+        [ 0.9, 0.9, 0.9, 1.0 ],         // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
+    var thermoButtons = [
+        [ 0.71, 0.4, 0.21, 1.0 ],       // color
+        [ 0.514, 0.498, 0.545, 1.0 ],   // front
+        [ 0.514, 0.498, 0.545, 1.0 ],   // right
+        [ 0.514, 0.498, 0.545, 1.0 ],   // bottom
+        [ 0.514, 0.498, 0.545, 1.0 ],   // back
+        [ 0.514, 0.498, 0.545, 1.0 ],   // left
+        [ 0.514, 0.498, 0.545, 1.0 ],   // top
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
     switch(color) {
         case 'couch':
             return couch
@@ -108,6 +141,12 @@ function colorSelect(color) {
             return airvent
         case 'outlet':
             return outlet
+        case 'thermoBase':
+            return thermoBase
+        case 'thermoScreen':
+            return thermoScreen
+        case 'thermoButtons':
+            return thermoButtons
         default:
             return
     }
@@ -128,7 +167,7 @@ var dr      = 5.0 * Math.PI / 180.0;
 var  fovy   = 70.0;     // Field-of-view in Y direction angle (in degrees)
 var  aspect = 1.0;      // Viewport aspect ratio
 
-var camera  = 3;         // Choose a view
+var camera  = 1;         // Choose a view
 
 var modelViewMatrix, projectionMatrix;
 var modelViewMatrixLoc, projectionMatrixLoc;
@@ -168,6 +207,22 @@ window.onload = function init() {
 
     // outlet
     colorCube([1.8, -0.7, -0.24], [0.07, 0.15, 0.05], 'outlet')
+
+    //
+    // thermostat
+    //
+
+    // base 
+    colorCube([-1.95, 0, 0.4], [0.05, 0.1, 0.14], 'thermoBase')
+
+    // screen
+    colorCube([-1.945, 0.01, 0.4], [0.05, 0.04, 0.065], 'thermoScreen')
+
+    // buttons
+    colorCube([-1.945, -0.03, 0.44], [0.05, 0.015, 0.02], 'thermoButtons')
+    colorCube([-1.945, -0.03, 0.41], [0.05, 0.015, 0.02], 'thermoButtons')
+    colorCube([-1.945, -0.03, 0.38], [0.05, 0.015, 0.02], 'thermoButtons')
+    colorCube([-1.945, -0.03, 0.35], [0.05, 0.015, 0.02], 'thermoButtons')
 
     //
     // chair 1
