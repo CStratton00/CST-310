@@ -247,11 +247,11 @@ window.onload = function init() {
     var scalar = 0.9;
 
     // walls
-    colorCubeWalls([-1.975, 0, 0.25], [0.05, 2, 1], 'room')
-    colorCubeWalls([1.975, 0, 0.25], [0.05, 2, 1], 'room')
+    colorCube([-1.975, 0, 0.25], [0.05, 2, 1], 'room')
+    colorCube([1.975, 0, 0.25], [0.05, 2, 1], 'room')
     colorCube([0, 0.975, 0.25], [4, 0.05, 1], 'room')       // ceiling
     colorCube([0, -0.975, 0.25], [4, 0.05, 1], 'room')      // floor
-    colorCubeWalls([0, 0, -0.25], [4, 2, 0.02], 'room')
+    colorCube([0, 0, -0.25], [4, 2, 0.02], 'room')
 
     // TV
     colorCube([0.41, 0.45, 0], [0.8, 0.45, 0.05], 'tv')
@@ -423,17 +423,6 @@ window.onload = function init() {
 }
 
 function colorCube(pos, scale, color) {
-
-    quad( 1, 0, 3, 2, pos, scale, color); //front
-    quad( 2, 3, 7, 6, pos, scale, color); //right side
-    quad( 3, 0, 4, 7, pos, scale, color); //bottom
-    quad( 6, 5, 1, 2, pos, scale, color); //top
-    quad( 4, 5, 6, 7, pos, scale, color); //back
-    quad( 5, 4, 0, 1, pos, scale, color); //left
-
-}
-
-function colorCubeWalls(pos, scale, color) {
 
     quad( 1, 0, 3, 2, pos, scale, color); //front
     quad( 2, 3, 7, 6, pos, scale, color); //right side
