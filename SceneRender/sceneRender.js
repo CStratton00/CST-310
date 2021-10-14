@@ -227,6 +227,24 @@ var eye;
 const at = vec3( 0.0, 0.0, 0.0 );
 const up = vec3( 0.0, 1.0, 0.0 );
 
+var lightPosition = vec4(.4, .45, 0, 0.0 );
+var lightAmbient = vec4(0.2, 0.5, 0.2, 1.0 );
+var lightDiffuse = vec4( 1.0, 1.0, 1.0, 1.0 );
+var lightSpecular = vec4( 0.0, 1.0, 1.0, 1.0 );
+
+var materialAmbient = vec4( 1.0, 0.0, 1.0, 1.0 );
+var materialDiffuse = vec4( 1.0, 0.8, 0.0, 1.0);
+var materialSpecular = vec4( 1.0, 0.8, 1.0, 1.0 );
+var materialShininess = 5.0;
+
+var ctm;
+var ambientColor, diffuseColor, specularColor;
+var modelView, projection;
+var viewerPos;
+var program;
+
+var flag = true;
+
 window.onload = function init() {
 
     canvas = document.getElementById( "gl-canvas" );
@@ -395,12 +413,25 @@ window.onload = function init() {
     gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
+    var vNormal = gl.getAttribLocation( program, "vNormal" );
+    gl.vertexAttribPointer( vNormal, 3, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray( vNormal );
+
     var vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
+
+
+    viewerPos = vec3(0.0, 0.0, -20.0 );
+
+    projection = ortho(-2.5, 1.5, -1.5, 1, -1000, 1000);
+
+    var ambientProduct = mult(lightAmbient, materialAmbient);
+    var diffuseProduct = mult(lightDiffuse, materialDiffuse);
+    var specularProduct = mult(lightSpecular, materialSpecular);
 
 // buttons for viewing parameters
 
@@ -419,6 +450,15 @@ window.onload = function init() {
     document.getElementById("Button4").onclick = function(event) {
         camera = 4;
     };
+
+    gl.uniform4fv(gl.getUniformLocation(program, "ambientProduct"), flatten(ambientProduct));
+    gl.uniform4fv(gl.getUniformLocation(program, "diffuseProduct"), flatten(diffuseProduct) );
+    gl.uniform4fv(gl.getUniformLocation(program, "specularProduct"), flatten(specularProduct) );
+    gl.uniform4fv(gl.getUniformLocation(program, "lightPosition"), flatten(lightPosition) );
+    gl.uniform1f(gl.getUniformLocation(program, "shininess"), materialShininess);
+
+    gl.uniformMatrix4fv( gl.getUniformLocation(program, "projectionMatrix"), false, flatten(projection));
+
     render();
 }
 
