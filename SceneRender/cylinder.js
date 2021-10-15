@@ -20,9 +20,9 @@ function cylinder(numSlices, numStacks, caps, color) {
     var bottomCenter = [0.0, bottom, 0.0];
 
 
-    var sideColor = [1.0, 0.0, 0.0, 1.0];
-    var topColor = [0.0, 1.0, 0.0, 1.0];
-    var bottomColor = [0.0, 0.0, 1.0, 1.0];
+    var sideColor = color[0];
+    var topColor = color[1];
+    var bottomColor = color[2];
 
 
     var cylinderVertexCoordinates = [];
