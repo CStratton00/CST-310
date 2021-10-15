@@ -178,11 +178,6 @@ function colorSelect(color) {
     var pillow = [
         [ 0.149, 0.203, 0.270, 1.0 ],
         [ 0.149, 0.203, 0.270, 1.0 ],
-        [ 0.149, 0.203, 0.270, 1.0 ],
-        [ 0.149, 0.203, 0.270, 1.0 ],
-        [ 0.149, 0.203, 0.270, 1.0 ],
-        [ 0.149, 0.203, 0.270, 1.0 ],
-        [ 0.149, 0.203, 0.270, 1.0 ],
         [ 0.149, 0.203, 0.270, 1.0 ]
     ]
 
@@ -332,8 +327,14 @@ window.onload = function init() {
     colorCube([0.4 + chair1XAdj, 0.25 + chair1YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'couch');
 
     //pillow
-    colorCube([0.35 + chair1XAdj, .2 + chair1YAdj, 0], [0.4 * scalar, 0.3 * scalar, 0.15 * scalar],'pillow')
+    //colorCube([0.35 + chair1XAdj, .2 + chair1YAdj, 0], [0.4 * scalar, 0.3 * scalar, 0.15 * scalar],'pillow')
+    var pillowCylinder = cylinder(200, 5, true, colorSelect('light'));
+    pillowCylinder.scale(.3, .25, .05);
+    pillowCylinder.rotate(0, [ 1, 1, 1 ]);
+    pillowCylinder.translate(0.35 + chair1XAdj, 0.2 + chair1YAdj, 0);
 
+    points = points.concat( pillowCylinder.TriangleVertices );
+    colors = colors.concat( pillowCylinder.TriangleVertexColors );
     //
     // chair 2
     //
@@ -413,10 +414,10 @@ window.onload = function init() {
     colorCube([0.44 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
 
     // light
-    var lightCylinder = cylinder(200, 3, true, colorSelect('light'));
-    lightCylinder.scale(.3, .3, .3);
+    var lightCylinder = cylinder(200, 5, true, colorSelect('light'));
+    lightCylinder.scale(.2, .1, .2);
     lightCylinder.rotate(0, [ 1, 1, 1 ]);
-    lightCylinder.translate(0.0, 0.95, 0.0);
+    lightCylinder.translate(0.15 , 0.95 , 0.4);
 
     points = points.concat( lightCylinder.TriangleVertices );
     colors = colors.concat( lightCylinder.TriangleVertexColors );
