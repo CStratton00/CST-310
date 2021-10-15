@@ -328,7 +328,7 @@ window.onload = function init() {
 
     //pillow
     //colorCube([0.35 + chair1XAdj, .2 + chair1YAdj, 0], [0.4 * scalar, 0.3 * scalar, 0.15 * scalar],'pillow')
-    var pillowCylinder = cylinder(200, 5, true, colorSelect('light'));
+    var pillowCylinder = cylinder(200, 5, true, colorSelect('pillow'));
     pillowCylinder.scale(.3, .25, .05);
     pillowCylinder.rotate(0, [ 1, 1, 1 ]);
     pillowCylinder.translate(0.35 + chair1XAdj, 0.2 + chair1YAdj, 0);
