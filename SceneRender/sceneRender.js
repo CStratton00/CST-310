@@ -247,8 +247,8 @@ var eye;
 const at = vec3( 0.0, 0.0, 0.0 );
 const up = vec3( 0.0, 1.0, 0.0 );
 
-var lightPosition = vec4( 0.0, 0.95, 0.0, 0.0 );
-var lightAmbient = vec4( 0.99, 0.906, 0.714, 1.0 );
+var lightPosition = vec4( -2.0, -1.0, 1.0, 0.0 );
+var lightAmbient = vec4( 0.59, 0.506, 0.414, 1.0 );
 var lightDiffuse = vec4( 0.99, 0.906, 0.714, 1.0 );
 var lightSpecular = vec4( 0.99, 0.906, 0.714, 1.0 );
 
@@ -413,13 +413,13 @@ window.onload = function init() {
     colorCube([0.44 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
 
     // light
-    var lightCylinder = cylinder(72, 3, true, colorSelect('light'));
-    lightCylinder.scale(10.0, 10.0, 10.0);
-    lightCylinder.rotate(45.0, [ 1, 1, 1 ]);
-    lightCylinder.translate(5.0, 10.0, 0.0);
+    var lightCylinder = cylinder(200, 3, true, colorSelect('light'));
+    lightCylinder.scale(.3, .3, .3);
+    lightCylinder.rotate(0, [ 1, 1, 1 ]);
+    lightCylinder.translate(0.0, 0.95, 0.0);
 
-    points.push( lightCylinder.TriangleVertices );
-    colors.push( lightCylinder.TriangleVertexColors );
+    points = points.concat( lightCylinder.TriangleVertices );
+    colors = colors.concat( lightCylinder.TriangleVertexColors );
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
