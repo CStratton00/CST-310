@@ -29,12 +29,12 @@ function colorSelect(color) {
 
     var chair = [
         [ 0.71, 0.4, 0.21, 1.0 ],   // color
-        [ 0.75, 0.35, 0.0, 1.0 ],   // front
-        [ 0.75, 0.35, 0.0, 1.0 ],   // right
-        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
-        [ 0.63, 0.32, 0.17, 1.0 ],  // back
-        [ 0.75, 0.35, 0.0, 1.0 ],   // left
-        [ 0.75, 0.35, 0.0, 1.0 ],   // top
+        [ 0.75, .35, 0.0, 1.0 ],    // front
+        [ 0.75, .35, 0.0, 1.0 ],    // right
+        [ 0.75, .35, 0.0, 1.0 ],    // bottom
+        [ 0.75, .35, 0.0, 1.0 ],    // back
+        [ 0.75, .35, 0.0, 1.0 ],    // left
+        [ 0.75, .35, 0.0, 1.0 ],    // top
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
 
@@ -227,15 +227,15 @@ var eye;
 const at = vec3( 0.0, 0.0, 0.0 );
 const up = vec3( 0.0, 1.0, 0.0 );
 
-var lightPosition = vec4(.4, .45, 0, 0.0 );
-var lightAmbient = vec4(0.2, 0.5, 0.2, 1.0 );
-var lightDiffuse = vec4( 1.0, 1.0, 1.0, 1.0 );
-var lightSpecular = vec4( 0.0, 1.0, 1.0, 1.0 );
+var lightPosition = vec4( 0.0, 0.95, 0.0, 0.0 );
+var lightAmbient = vec4( 0.99, 0.906, 0.714, 1.0 );
+var lightDiffuse = vec4( 0.99, 0.906, 0.714, 1.0 );
+var lightSpecular = vec4( 0.99, 0.906, 0.714, 1.0 );
 
-var materialAmbient = vec4( 1.0, 0.0, 1.0, 1.0 );
-var materialDiffuse = vec4( 1.0, 0.8, 0.0, 1.0);
-var materialSpecular = vec4( 1.0, 0.8, 1.0, 1.0 );
-var materialShininess = 5.0;
+var materialAmbient = vec4( 0.8, 0.8, 0.8, 1.0 );
+var materialDiffuse = vec4( 0.4, 0.4, 0.4, 1.0 );
+var materialSpecular = vec4( 0.4, 0.4, 0.4, 1.0 );
+var materialShininess = 1.0;
 
 var ctm;
 var ambientColor, diffuseColor, specularColor;

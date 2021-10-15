@@ -57,7 +57,7 @@ void main() {
 	  specular = vec4( 0.0, 0.0, 0.0, 1.0 );
     }
 
-    fColor = ( ambient + diffuse + specular ) / vColor;
+    fColor = ( ambient + diffuse + specular ) * vColor;
 
     fColor.a = 1.0;
     gl_Position = projectionMatrix * modelViewMatrix * vPosition;
