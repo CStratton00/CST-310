@@ -175,6 +175,16 @@ function colorSelect(color) {
         [ 0.514, 0.498, 0.545, 1.0 ],   // front
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
+    var pillow = [
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ],
+        [ 0.149, 0.203, 0.270, 1.0 ]
+    ]
 
     switch(color) {
         case 'couch':
@@ -207,6 +217,8 @@ function colorSelect(color) {
             return thermoButtons
         case 'light':
             return lightContainer
+        case 'pillow':
+            return pillow
         default:
             return
     }
@@ -319,6 +331,8 @@ window.onload = function init() {
     // back rest
     colorCube([0.4 + chair1XAdj, 0.25 + chair1YAdj, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar], 'couch');
 
+    //pillow
+    colorCube([0.35 + chair1XAdj, .2 + chair1YAdj, 0], [0.4 * scalar, 0.3 * scalar, 0.15 * scalar],'pillow')
 
     //
     // chair 2
