@@ -243,7 +243,7 @@ const at = vec3( 0.0, 0.0, 0.0 );
 const up = vec3( 0.0, 1.0, 0.0 );
 
 var lightPosition = vec4( -2.0, -1.0, 1.0, 0.0 );
-var lightAmbient = vec4( 0.59, 0.506, 0.414, 1.0 );
+var lightAmbient = vec4( 0.99, 0.906, 0.714, 1.0 );
 var lightDiffuse = vec4( 0.99, 0.906, 0.714, 1.0 );
 var lightSpecular = vec4( 0.99, 0.906, 0.714, 1.0 );
 
