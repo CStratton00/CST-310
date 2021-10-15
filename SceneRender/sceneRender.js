@@ -170,6 +170,12 @@ function colorSelect(color) {
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
 
+    var lightContainer = [
+        [ 0.71, 0.4, 0.21, 1.0 ],       // color
+        [ 0.514, 0.498, 0.545, 1.0 ],   // front
+        [ 1.0, 1.0, 1.0, 1.0 ]          // white
+    ];
+
     switch(color) {
         case 'couch':
             return couch
@@ -199,6 +205,8 @@ function colorSelect(color) {
             return thermoScreen
         case 'thermoButtons':
             return thermoButtons
+        case 'light':
+            return lightContainer
         default:
             return
     }
@@ -264,7 +272,7 @@ window.onload = function init() {
     var bookYAdj = -0.03;
     var scalar = 0.9;
 
-    // walls
+    // Walls
     colorCube([-1.975, 0, 0.25], [0.05, 2, 1], 'room')
     colorCube([1.975, 0, 0.25], [0.05, 2, 1], 'room')
     colorCube([0, 0.975, 0.25], [4, 0.05, 1], 'room')       // ceiling
@@ -274,14 +282,14 @@ window.onload = function init() {
     // TV
     colorCube([0.41, 0.45, 0], [0.8, 0.45, 0.05], 'tv')
 
-    // air vent
+    // Air Vent
     colorCube([-1.0, 0.96, 0.4], [0.5, 0.05, 0.4], 'airvent')
 
     // outlet
     colorCube([1.8, -0.7, -0.24], [0.07, 0.15, 0.05], 'outlet')
 
     //
-    // thermostat
+    // Thermostat
     //
 
     // base 
@@ -390,6 +398,15 @@ window.onload = function init() {
     colorCube([0.37 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book3');
     colorCube([0.44 + bookXAdj, -0.75 + bookYAdj, 0.35], [0.05, 0.2, 0.17], 'book2');
 
+    // light
+    var lightCylinder = cylinder(72, 3, true, colorSelect('light'));
+    lightCylinder.scale(10.0, 10.0, 10.0);
+    lightCylinder.rotate(45.0, [ 1, 1, 1 ]);
+    lightCylinder.translate(5.0, 10.0, 0.0);
+
+    points.push( lightCylinder.TriangleVertices );
+    colors.push( lightCylinder.TriangleVertexColors );
+
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
 
@@ -411,7 +428,7 @@ window.onload = function init() {
 
     var vBuffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer );
-    gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten( points ), gl.STATIC_DRAW );
 
     var vNormal = gl.getAttribLocation( program, "vNormal" );
     gl.vertexAttribPointer( vNormal, 3, gl.FLOAT, false, 0, 0 );
@@ -424,9 +441,7 @@ window.onload = function init() {
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
 
-
     viewerPos = vec3(0.0, 0.0, -20.0 );
-
     projection = ortho(-2.5, 1.5, -1.5, 1, -1000, 1000);
 
     var ambientProduct = mult(lightAmbient, materialAmbient);
