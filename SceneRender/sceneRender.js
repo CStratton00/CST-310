@@ -108,7 +108,7 @@ function colorSelect(color) {
         [ 0.71, 0.4, 0.21, 1.0 ],       // color
         [ 0.929, 0.850, 0.792, 1.0 ],   // front
         [ 0.847, 0.737, 0.650, 1.0 ],   // right
-        [ 0.627, 0.529, 0.450, 1.0 ],   // bottom
+        [ 0.75, .35, 0.0, 1.0 ],   // bottom
         [ 0.63, 0.32, 0.17, 1.0 ],      // back
         [ 0.847, 0.737, 0.650, 1.0 ],   // left
         [ 0.149, 0.203, 0.270, 1.0 ],   // top
@@ -171,8 +171,8 @@ function colorSelect(color) {
     ];
 
     var lightContainer = [
-        [ 0.71, 0.4, 0.21, 1.0 ],       // color
-        [ 0.514, 0.498, 0.545, 1.0 ],   // front
+        [ 0.9, 0.9, 0.9, 1.0 ],       // color
+        [ 1.0, 0.498, 0.545, 1.0 ],   // front
         [ 1.0, 1.0, 1.0, 1.0 ]          // white
     ];
     var pillow = [
@@ -417,11 +417,18 @@ window.onload = function init() {
     var lightCylinder = cylinder(200, 5, true, colorSelect('light'));
     lightCylinder.scale(.2, .1, .2);
     lightCylinder.rotate(0, [ 1, 1, 1 ]);
-    lightCylinder.translate(0.15 , 0.95 , 0.4);
+    lightCylinder.translate(1.0 , 0.95 , 0.4);
 
     points = points.concat( lightCylinder.TriangleVertices );
     colors = colors.concat( lightCylinder.TriangleVertexColors );
 
+    var lightCylinder2 = cylinder(200, 5, true, colorSelect('light'));
+    lightCylinder2.scale(.2, .1, .2);
+    lightCylinder2.rotate(0, [ 1, 1, 1 ]);
+    lightCylinder2.translate(-1.5 , 0.95 , 0.4);
+
+    points = points.concat( lightCylinder2.TriangleVertices );
+    colors = colors.concat( lightCylinder2.TriangleVertexColors );
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
 
