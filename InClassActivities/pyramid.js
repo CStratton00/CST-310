@@ -187,7 +187,6 @@ function render()
     switch ( camera ) {
         case 1:
             eye = vec3(radius * Math.sin(theta) * Math.cos(phi), radius * Math.sin(theta + .5) * Math.sin(phi), radius * Math.cos(theta));
-            theta += Math.PI / 720;
             break;
         case 2:
             eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi), radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
