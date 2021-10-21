@@ -45,39 +45,15 @@ window.onload = function init()
     aspect = canvas.width/canvas.height;
 
     var xAjust1 = 0.15;
-    var xAjust2 = -0.8;
     var scalar = 0.9;
 
-    //
-    // chair 1
-    //
+    //x axis
+    colorCube([0,0,0], [1.5,.03,.03]);
 
-    // arm rests
-    colorCube([0.04 + xAjust1, 0, 0], [0.2 * scalar, 0.9 * scalar ,0.7 * scalar]);
-    colorCube([0.76 + xAjust1, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
-
-    // bottom cushions
-    colorCube([0.4 + xAjust1, -0.16, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
-    colorCube([0.4 + xAjust1, 0, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
-
-    // back rest
-    colorCube([0.4 + xAjust1, 0.25, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar]);
-
-
-    //
-    // chair 2
-    //
-
-    // arm rests
-    colorCube([0.04 + xAjust2, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
-    colorCube([0.76 + xAjust2, 0, 0], [0.2 * scalar, 0.9 * scalar, 0.7 * scalar]);
-
-    // bottom cushions
-    colorCube([0.4 + xAjust2, -0.16, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
-    colorCube([0.4 + xAjust2, 0, 0], [0.6 * scalar, 0.2 * scalar, 0.7 * scalar]);
-
-    // back rest
-    colorCube([0.4 + xAjust2, 0.25, -0.225], [0.6 * scalar, 0.5 * scalar, 0.2 * scalar]);
+    //cubes on x axis
+    colorCube([-.5,0,0], [.4,.4,.4]);
+    colorCube([0,0,0], [.4,.4,.4]);
+    colorCube([.5,0,0], [.4,.4,.4]);
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -140,12 +116,12 @@ function quad(a, b, c, d, pos, scale)
 {
     var vertexColors = [
         [ 0.71, 0.4, 0.21, 1.0 ],   // arm color
-        [ 1.0, 0.65, 0.43, 1.0 ],   // front
-        [ 0.71, 0.4, 0.21, 1.0 ],   // right
-        [ 0.0, 0.0, 0.0, 1.0 ],     // bottom
-        [ 0.63, 0.32, 0.17, 1.0 ],  // back
-        [ 0.9, 0.55, 0.38, 1.0 ],   // left
-        [ 1.0, 0.7, 0.5, 1.0 ],     // top
+        [ 1.0, 0.0, 0.0, 1.0 ],     // front
+        [ 0.0, 1.0, 0.0, 1.0 ],     // right
+        [ 0.0, 0.0, 1.0, 1.0 ],     // bottom
+        [ 1.0, 1.0, 0.0, 1.0 ],     // back
+        [ 1.0, 0.0, 1.0, 1.0 ],     // left
+        [ 0.0, 1.0, 1.0, 1.0 ],     // top
         [ 1.0, 1.0, 1.0, 1.0 ]      // white
     ];
 
@@ -189,10 +165,10 @@ function render()
             eye = vec3(radius * Math.sin(theta) * Math.cos(phi), radius * Math.sin(theta + .5) * Math.sin(phi), radius * Math.cos(theta));
             break;
         case 2:
-            eye = vec3(radius * Math.sin(theta + 0.4) * Math.cos(phi), radius * Math.sin(theta + 0.4) * Math.sin(phi), radius * Math.cos(theta + 0.4));
+            eye = vec3(radius * Math.sin(theta - 0.4) * Math.cos(phi + 0.8), radius * Math.sin(theta - 0.4) * Math.sin(phi + 0.8), radius * Math.cos(theta - 0.4));
             break;
         case 3:
-            eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi + 0.6), radius * Math.sin(theta + 5.5) * Math.sin(phi + 0.6), radius * Math.cos(theta + 0.5));
+            eye = vec3(radius * Math.sin(theta + 0.5) * Math.cos(phi - 0.6), radius * Math.sin(theta + 5.5) * Math.sin(phi - 0.6), radius * Math.cos(theta + 0.5));
             break;
 
     }
