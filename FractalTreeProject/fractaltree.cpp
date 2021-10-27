@@ -40,7 +40,17 @@ string grammar(string input, float len, float xrot, float yrot, float zrot) {
   /*
 
     Grammar rules:
-
+    F - forward len
+    f - forward len W/O drawing
+    + (+) rot x-axis xrot deg
+    - (-) rot x-axis xrot deg
+    & (+) rot y-axis yrot deg
+    ^ (-) rot y-axis yrot deg
+    \ (+) rot z-axis zrot deg
+    / (-) rot z-axis zrot deg
+    | turn 180 deg
+    [ push current state onto stack
+    ] pop state on stack and make it the current state 
 
   */
 }
