@@ -59,7 +59,7 @@ int main() {
 
     string input;
     fstream myFile;
-    myFile.open("file.in");
+    myFile.open("../data/file.in");
 
     if (!myFile) {
         cout << "File not found";
@@ -76,7 +76,7 @@ int main() {
     cout << output << endl;
     cout << "Recursion concluded\n";
     
-    myFile.open("file.out");
+    myFile.open("../data/file.out");
     myFile << output;
     myFile.close();
 
