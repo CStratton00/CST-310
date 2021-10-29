@@ -18,7 +18,7 @@ window.onload = function init() {
     // gl.enable(gl.DEPTH_TEST);
 
     // Get A WebGL context
-    var canvas = document.querySelector("#c");
+    var canvas = document.querySelector("c");
     var gl = canvas.getContext("webgl");
     if (!gl) {
         return;
@@ -89,14 +89,14 @@ window.onload = function init() {
     gl.drawArrays(primitiveType, offset, count);
 }
 
-// function render() {
+function render() {
 
-//     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-//     gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten( modelViewMatrix ) );
-//     gl.uniformMatrix4fv( projectionMatrixLoc, false, flatten( projectionMatrix ) );
+    gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten( modelViewMatrix ) );
+    gl.uniformMatrix4fv( projectionMatrixLoc, false, flatten( projectionMatrix ) );
 
-//     gl.drawArrays( gl.TRIANGLES, 0, points.length );
-//     requestAnimFrame( render );
+    gl.drawArrays( gl.TRIANGLES, 0, points.length );
+    requestAnimFrame( render );
 
-// }
+}
