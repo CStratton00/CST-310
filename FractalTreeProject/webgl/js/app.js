@@ -1,5 +1,16 @@
 "use strict";
 
+const {
+    treeA,
+    treeB,
+    treeC, 
+    treeD,
+    treeE,
+    treeF,
+    applyRule,
+    renderAGeneration
+} = require("./trees.js");
+/*
 var canvas;
 var gl;
 
@@ -100,3 +111,16 @@ function render() {
     requestAnimFrame( render );
 
 }
+ */
+
+function main() {
+    var iterations = 4;
+    var system = treeE;
+
+    let systemState = system.axiom;
+    for(let i = 0; i < iterations; i++) {
+        systemState = renderAGeneration(system, systemState);
+    }
+    console.log(systemState);
+}
+main();
