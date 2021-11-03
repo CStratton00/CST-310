@@ -12,7 +12,6 @@
 // } = require("./trees.js");
 
 var gl;
-var points = [];
 
 window.onload = function init() {
     // prepare webgl and canvas
@@ -26,22 +25,21 @@ window.onload = function init() {
     gl.clearColor(0.5, 0.5, 0.5, 0.9);
 
     //  Load shaders and initialize attribute buffers
-    var program = initShaders( gl, "vertex-shader", "fragment-shader" );
+    let program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
     // Load the data into the GPU
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER, flatten( points ), gl.STATIC_DRAW );
 
     // Associate out shader variables with our data buffer
     var vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
-    generateTree( treeE );
+    generateTree( treeF );
 
-    // buffer code about points? 
+    gl.bufferData(gl.ARRAY_BUFFER, flatten( points ), gl.STATIC_DRAW);
 
     render();
 };
