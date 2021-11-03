@@ -1,76 +1,37 @@
-
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Fractal Tree</title>
 
-<script id="vertex-shader" type="js">
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec3 vPosition;
 
-    attribute vec4 a_position;
-    uniform vec2 u_resolution;
-  
-    void main() {
+        void main() {
+            gl_Position = vec4(vPosition, 1.0);
+        }
+    </script>
 
-       // convert the position from pixels to 0.0 to 1.0
-       vec2 zeroToOne = a_position.xy / u_resolution;
-  
-       // convert from 0->1 to 0->2
-       vec2 zeroToTwo = zeroToOne * 2.0;
-  
-       // convert from 0->2 to -1->+1 (clipspace)
-       vec2 clipSpace = zeroToTwo - 1.0;
-  
-       gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
-       
-    }
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
 
-</script>
+        void main() {
+            gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 );
+        }
+    </script>
 
-<script id="fragment-shader" type="js">
-
-    precision mediump float;
-
-    void main() {
-
-      gl_FragColor = vec4(1, 0, 0.5, 1); // return redish-purple
-
-    }
-
-</script>
-
-<script type="text/javascript" src="../../Common/webgl-utils.js"></script>
-<script type="text/javascript" src="../../Common/initShaders.js"></script>
-<script type="text/javascript" src="../../Common/MV.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="../../Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../../Common/initShaders.js"></script>
+    <script type="text/javascript" src="../../Common/MV.js"></script>
+    <script type="text/javascript" src="js/draw.js"></script>
+    <script type="text/javascript" src="js/trees.js"></script>
+    <script type="text/javascript" src="js/lcode.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
 
 <body>
-<canvas id="c" width="1024" height="512">
-  Oops ... your browser doesn't support the HTML5 canvas element. Sucks to suck
+<canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
-<script>
-  var myCanvas = document.getElementById("c");
-  var ctx = myCanvas.getContext("2d");
-  function draw(startX, startY, len, angle) {
-    ctx.beginPath();
-    ctx.save();
-
-    ctx.translate(startX, startY);
-    ctx.rotate(angle * Math.PI/180);
-    ctx.moveTo(0, 0);
-    ctx.lineTo(0, -len);
-    ctx.stroke();
-
-    if(len < 10) {
-      ctx.restore();
-      return;
-    }
-
-    draw(0, -len, len*0.8, 15);
-    draw(0, -len, len*0.8, -15);
-
-    ctx.restore();
-  }
-  draw(400, 500, 100, 0)
-</script>
-<br/>
-
 </body>
 </html>
+
