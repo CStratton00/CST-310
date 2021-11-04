@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "cjs-loader": "^0.1.0"
-  },
-  "scripts": {
-    "start": "node webgl/js/app.js"
-  }
-}

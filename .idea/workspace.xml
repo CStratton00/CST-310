@@ -6,7 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="12cff28c-bf19-4da2-bd58-9c155b24287d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/webgl/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/data/file.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/data/file.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/.package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/cjs-loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/demo/base64.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/demo/foo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/demo/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/demo/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/demo/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/node_modules/cjs-loader/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/src/fractaltree.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/js/draw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/js/lcode.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/js/trees.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/webgl/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +106,7 @@
       <workItem from="1635557983423" duration="656000" />
       <workItem from="1635738598623" duration="10792000" />
       <workItem from="1635928745697" duration="762000" />
+      <workItem from="1636000850765" duration="25000" />
     </task>
     <servers />
   </component>
