@@ -5,15 +5,30 @@ let currHeading = vec2(0, 1);
 
 let stack       = [];
 let points      = [];
+let colors      = [];
+
+var black = [
+    [ 0.0, 0.0, 0.0, 1.0 ]
+];
 
 // call specific tree for segment length
 function F( segLen ) { // add the current position and updated position
-    points.push( currPos );
+    var newCylinder = cylinder( 72, 3, true );
+    newCylinder.scale(0.5, 1.0, 0.5);
+    newCylinder.rotate(45.0, [ 1, 1, 1]);
+    newCylinder.translate(0.0, 0.0, 0.0);
+    // newCylinder.scale( 1, 1, 1 );
+    // newCylinder.translate( 0, currPos[0], 0 );
 
-    const movement = scale( segLen, currHeading );
-    currPos = add( currPos, movement );
-    
-    points.push( currPos );
+    points = points.concat( newCylinder.TriangleVertices );
+    colors = colors.concat( newCylinder.TriangleVertexColors );
+
+    // points.push( currPos );
+    //
+    // const movement = scale( segLen, currHeading );
+    // currPos = add( currPos, movement );
+    //
+    // points.push( currPos );
 }
 
 // blank for now

@@ -175,14 +175,3 @@ const treeF = {
         ']': rbrack
     }
 }
-
-// module.exports = {
-//     treeA,
-//     treeB,
-//     treeC,
-//     treeD,
-//     treeE,
-//     treeF,
-//     applyRule,
-//     renderAGeneration
-// }
