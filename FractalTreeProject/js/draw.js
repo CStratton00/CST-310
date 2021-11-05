@@ -68,7 +68,7 @@ function lbrack() {
 function rbrack() {
     const pop   = stack.pop();
     currPos     = pop[0];
-    cuurHeading = pop[1];
+    currHeading = pop[1];
 }
 
 // const funcDict = {
