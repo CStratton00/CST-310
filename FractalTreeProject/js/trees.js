@@ -3,7 +3,7 @@ const treeA = {
     params: {
         angle: 25.7,
         iteration: 5,
-        segLen: .013 // around .01-.02
+        segLen: .008 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -32,7 +32,7 @@ const treeB = {
     params: {
         angle: 20,
         iteration: 5,
-        segLen: .013 // around .01-.02
+        segLen: .02 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -61,7 +61,7 @@ const treeC = {
     params: {
         angle: 22.5,
         iteration: 4,
-        segLen: .013 // around .01-.02
+        segLen: .02 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -90,7 +90,7 @@ const treeD = {
     params: {
         angle: 20,
         iteration: 7,
-        segLen: .013 // around .01-.02
+        segLen: .0075 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -120,7 +120,7 @@ const treeE = {
     params: {
         angle: 25.7,
         iteration: 7,
-        segLen: .013 // around .01-.02
+        segLen: .007 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -150,7 +150,7 @@ const treeF = {
     params: {
         angle: 22.5,
         iteration: 5,
-        segLen: .013 // around .01-.02
+        segLen: .02 // around .01-.02
     },
     axiom: "X",
     rules: {
