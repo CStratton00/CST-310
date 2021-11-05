@@ -1,5 +1,5 @@
 // generate tree code
-function generateTree( treeType ) {
+function generateTree( treeType, startPos ) {
     var system = treeType;
 
     // get the first character of the tree
@@ -13,7 +13,7 @@ function generateTree( treeType ) {
     }
 
     // draw the tree using the tree type and string
-    drawTrees( system, systemState );
+    drawTrees( system, systemState, startPos );
 }
 
 // render the tree grammar
@@ -26,6 +26,8 @@ function renderAGeneration( system, previousGeneration ) {
         // add the new rule set to the next generation
         nextGeneration += applyRule(system.rules, character);
     }
+
+    nextGeneration += 'r';
     
     return nextGeneration;
 }
@@ -37,13 +39,13 @@ function applyRule( rules, char ) {
 }
 
 // draw the tree
-function drawTrees( tree, treeString ) {
+function drawTrees( tree, treeString, startPos ) {
     // loop through the tree string
     for( const character of treeString ) {
         // if the character is in the tree commands
         if( tree.commands[character] ) {
             // execute the command
-            tree.commands[character]( tree.params );
+            tree.commands[character]( tree.params, startPos );
         }
     }
 }

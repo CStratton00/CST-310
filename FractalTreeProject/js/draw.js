@@ -1,13 +1,20 @@
 const origin    = vec2(0, -1);
+const origHeading = vec2(0, 1);
 
 let currPos     = origin;
-let currHeading = vec2(0, 1);
+let currHeading = origHeading;
 
 let stack       = [];
 let points      = [];
 
+let first = true;
+
 // call specific tree for segment length
-function F( segLen ) { // add the current position and updated position
+function F( segLen, startPos ) { // add the current position and updated position
+    if( first ) {
+        currPos = startPos;
+        first = false;
+    }
     points.push( currPos );
 
     const movement = scale( segLen, currHeading );
@@ -69,6 +76,11 @@ function rbrack() {
     const pop   = stack.pop();
     currPos     = pop[0];
     currHeading = pop[1];
+}
+
+function reset() {
+    first = true;
+    currHeading = origHeading;
 }
 
 // const funcDict = {

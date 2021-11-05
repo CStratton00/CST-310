@@ -10,8 +10,8 @@ const treeA = {
         F: "F[+F]F[-F]F"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -24,7 +24,8 @@ const treeA = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -39,8 +40,8 @@ const treeB = {
         F: "F[+F]F[-F][F]"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -53,7 +54,8 @@ const treeB = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -68,8 +70,8 @@ const treeC = {
         F: "FF-[-F+F+F]+[+F-F-F]"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -82,7 +84,8 @@ const treeC = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -98,8 +101,8 @@ const treeD = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -112,7 +115,8 @@ const treeD = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -128,8 +132,8 @@ const treeE = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -142,7 +146,8 @@ const treeE = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -158,8 +163,8 @@ const treeF = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -172,7 +177,8 @@ const treeF = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 

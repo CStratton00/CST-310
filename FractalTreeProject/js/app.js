@@ -37,7 +37,12 @@ window.onload = function init() {
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
-    generateTree( treeF );
+    generateTree( treeF, vec2(.23, -.8) );
+    generateTree( treeA, vec2(-.23, -.9) );
+    generateTree( treeB, vec2(.12, -.95) );
+    generateTree( treeC, vec2(-.62, -.72) );
+    generateTree( treeD, vec2(.41, -.98) );
+    generateTree( treeE, vec2(-.73, -.83) );
 
     gl.bufferData(gl.ARRAY_BUFFER, flatten( points ), gl.STATIC_DRAW);
 
