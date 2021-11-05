@@ -16,8 +16,7 @@ function F( segLen, startPos ) { // add the current position and updated positio
         first = false;
     }
     points.push( currPos );
-
-    const movement = scale( segLen, currHeading );
+    let movement = scale( segLen * (Math.random() * (1.2000 - 0.7000) + 0.700).toFixed(4), currHeading );
     currPos = add( currPos, movement );
     
     points.push( currPos );
@@ -28,6 +27,7 @@ function f() {}
 
 // Apply a positive rotation about the X-axis of xrot degrees
 function plus( angle ) {
+    angle += Math.floor((Math.random() * 30) - 16);
     const x1 = currHeading[0];
     const y1 = currHeading[1];
 
@@ -39,6 +39,7 @@ function plus( angle ) {
 
 // Apply a negative rotation about the X-axis of xrot degrees
 function minus( angle ) {
+    angle += Math.floor((Math.random() * 30) - 16);
     const x1 = currHeading[0];
     const y1 = currHeading[1];
 
