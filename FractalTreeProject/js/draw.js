@@ -1,7 +1,9 @@
-const origin    = vec2(0, -1);
+const origin    = vec3(0, 0, 0);
 
 let currPos     = origin;
-let currHeading = vec2(0, 1);
+let currHeading = vec3(0, 1, 0);
+
+let size        = 1;
 
 let stack       = [];
 let points      = [];
@@ -13,22 +15,15 @@ var black = [
 
 // call specific tree for segment length
 function F( segLen ) { // add the current position and updated position
-    var newCylinder = cylinder( 72, 3, true );
-    newCylinder.scale(0.5, 1.0, 0.5);
-    newCylinder.rotate(45.0, [ 1, 1, 1]);
-    newCylinder.translate(0.0, 0.0, 0.0);
-    // newCylinder.scale( 1, 1, 1 );
-    // newCylinder.translate( 0, currPos[0], 0 );
+    // find the angle of the current heading
+    heading = Math.atan2( currHeading[1], currHeading[0] ) * 180 / Math.PI - 90;
 
-    points = points.concat( newCylinder.TriangleVertices );
-    colors = colors.concat( newCylinder.TriangleVertexColors );
+    // draw the cylinder
+    drawCylinder( segLen, currPos, [0, heading], .2 / size );
 
-    // points.push( currPos );
-    //
-    // const movement = scale( segLen, currHeading );
-    // currPos = add( currPos, movement );
-    //
-    // points.push( currPos );
+    // update the current position
+    const movement = scale( segLen, currHeading );
+    currPos = add( currPos, movement );
 }
 
 // blank for now
@@ -38,22 +33,26 @@ function f() {}
 function plus( angle ) {
     const x1 = currHeading[0];
     const y1 = currHeading[1];
+    const z1 = currHeading[2];
 
     const x2 = Math.cos( radians(angle) ) * x1 - Math.sin( radians(angle) ) * y1;
     const y2 = Math.sin( radians(angle) ) * x1 + Math.cos( radians(angle) ) * y1;
+    const z2 =  0; //Math.cos( radians(angle) ) * z1 - Math.sin( radians(angle) ) * z1;
 
-    currHeading = vec2( x2, y2 );
+    currHeading = vec3( x2, y2, z2 );
 }
 
 // Apply a negative rotation about the X-axis of xrot degrees
 function minus( angle ) {
     const x1 = currHeading[0];
     const y1 = currHeading[1];
+    const z1 = currHeading[2];
 
     const x2 = Math.cos( radians(-angle) ) * x1 - Math.sin( radians(-angle) ) * y1;
     const y2 = Math.sin( radians(-angle) ) * x1 + Math.cos( radians(-angle) ) * y1;
+    const z2 =  0; //Math.cos( radians(-angle) ) * z1 - Math.sin( radians(-angle) ) * z1;
 
-    currHeading = vec2( x2, y2 );
+    currHeading = vec3( x2, y2, z2 );
 }
 
 // blank for now
@@ -67,11 +66,13 @@ function carrot() {}
 function pipe() {
     const x1 = currHeading[0];
     const y1 = currHeading[1];
+    const z1 = currHeading[2];
 
     const x2 = Math.cos( radians(180) ) * x1 - Math.sin( radians(180) ) * y1;
     const y2 = Math.sin( radians(180) ) * x1 + Math.cos( radians(180) ) * y1;
+    const z2 =  0; //Math.cos( radians(180) ) * z1 - Math.sin( radians(180) ) * z1;
 
-    currHeading = vec2( x2, y2 );
+    currHeading = vec3( x2, y2, z2 );
 }
 
 // Push the current state of the turtle onto a pushdown stack
@@ -83,17 +84,27 @@ function lbrack() {
 function rbrack() {
     const pop   = stack.pop();
     currPos     = pop[0];
-    cuurHeading = pop[1];
+    currHeading = pop[1];
 }
 
-// const funcDict = {
-//     'F': F,
-//     'f': f,
-//     '+': plus,
-//     '-': minus,
-//     '&': ampersand,
-//     '^': carrot,
-//     '|': pipe,
-//     '[': lbrack,
-//     ']': rbrack
-// }
+function drawCylinder( len, tran, rot, scale ) {
+    // create a cylinder and scale it appropriately
+    const Cylinder = new cylinder( 100, 3, true );
+    Cylinder.scale( len * scale, len, len * scale );
+
+    // rotate cylinder where [0] is theta, [1] is phi, [2] is yaw
+    Cylinder.rotate(rot[1], [0, 0, 1]);
+
+    // start tree start posiiton
+    Cylinder.translate( 0, -1 + len / 2, 0 );
+
+    // translate cylinder
+    Cylinder.translate( tran[0], tran[1], tran[2] );
+
+    points = points.concat( Cylinder.TriangleVertices );
+    colors = colors.concat( Cylinder.TriangleVertexColors );
+}
+
+function drawSphere() {
+    // do stuff
+}

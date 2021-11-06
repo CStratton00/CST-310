@@ -149,8 +149,8 @@ const treeE = {
 const treeF = {
     params: {
         angle: 22.5,
-        iteration: 5,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .05 // around .01-.02
     },
     axiom: "X",
     rules: {
