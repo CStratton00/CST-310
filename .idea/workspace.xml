@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12cff28c-bf19-4da2-bd58-9c155b24287d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FractalTreeProject/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/js/draw.js" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/js/draw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/js/lcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/js/lcode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FractalTreeProject/js/trees.js" beforeDir="false" afterPath="$PROJECT_DIR$/FractalTreeProject/js/trees.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="fractal_trees" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

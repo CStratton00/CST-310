@@ -1,17 +1,22 @@
+/**
+ * Trees files
+ * Code for tree generation
+ */
+
 // tree functions that prints the fractal tree design
 const treeA = {
     params: {
         angle: 25.7,
-        iteration: 5,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .008 // around .01-.02
     },
     axiom: "F",
     rules: {
         F: "F[+F]F[-F]F"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -24,23 +29,24 @@ const treeA = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
 const treeB = {
     params: {
         angle: 20,
-        iteration: 5,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .02 // around .01-.02
     },
     axiom: "F",
     rules: {
         F: "F[+F]F[-F][F]"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -53,23 +59,24 @@ const treeB = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
 const treeC = {
     params: {
         angle: 22.5,
-        iteration: 4,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .02 // around .01-.02
     },
     axiom: "F",
     rules: {
         F: "FF-[-F+F+F]+[+F-F-F]"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -82,15 +89,16 @@ const treeC = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
 const treeD = {
     params: {
         angle: 20,
-        iteration: 7,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .0075 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -98,8 +106,8 @@ const treeD = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -112,15 +120,16 @@ const treeD = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
 const treeE = {
     params: {
         angle: 25.7,
-        iteration: 7,
-        segLen: .013 // around .01-.02
+        iteration: 3,
+        segLen: .007 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -128,8 +137,8 @@ const treeE = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -142,7 +151,8 @@ const treeE = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }
 
@@ -158,8 +168,8 @@ const treeF = {
         F: "FF"
     },
     commands: {
-        'F'( params ) {
-            F( params.segLen );
+        'F'( params, startPos ) {
+            F( params.segLen, startPos );
         },
         'f': f,
         '+'( params ) {
@@ -172,6 +182,7 @@ const treeF = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack
+        ']': rbrack,
+        'r': reset
     }
 }

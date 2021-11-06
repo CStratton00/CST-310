@@ -1,3 +1,8 @@
+/**
+ * App Code
+ * File used to create the canvas to generate the forest and render the points 
+*/
+
 "use strict";
 
 var gl;
@@ -14,7 +19,8 @@ window.onload = function init() {
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     // --------------- Create Tree Points ---------------
-    generateTree( treeF );
+    // generateTree( treeF, vec3( 0, 0, 0) );
+    generateForest( 4 );
 
     // --------------- WebGL Jazz ---------------
     //  Configure WebGL
@@ -51,10 +57,8 @@ window.onload = function init() {
     render();
 };
 
-
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
     gl.uniform3fv( thetaLoc, theta );
     gl.drawArrays( gl.TRIANGLES, 0, points.length );
 }
-
