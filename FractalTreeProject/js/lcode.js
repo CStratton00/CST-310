@@ -17,42 +17,11 @@ function generateTree( treeType, startPos ) {
     drawTrees( system, systemState, startPos );
 }
 
-function generateForest(numTrees) {
-    //let trees[numTrees];
-    //let pos[numTrees];
+function generateForest( numTrees ) {
     for (let i = 0; i < numTrees; i++) {
-        let j = 1; //Math.floor((Math.random() * 6) + 1);
-        switch (j) {
-            case 1:
-                //trees[i] = treeA;
-                generateTree(treeA, vec2(0, -1));//(Math.random() * (1.0000 + 1.0000) - 1.0000).toFixed(4), (Math.random() * (0.0000 + 1.0000) - 1.0000).toFixed(4)));
-            default:
-                return;
-        }
+        tree = randTree(Math.floor(Math.random() * 6) + 1);
+        generateTree( tree, vec2(( Math.floor( Math.random() * ( 500 - ( -500 ) + 500 )) + ( -500 )) / 1000, -1 ));
     }
-}
-//         case 2:
-//             trees[i] = treeB;
-//         case 3:
-//             trees[i] = treeC;
-//         case 4:
-//             trees[i] = treeD;
-//         case 5:
-//             trees[i] = treeE;
-//         case 6:
-//             trees[i] = treeF;
-//         default:
-//             trees[i] = treeA;
-//     }
-// }
-// for (let i = 0; i < numTrees; i++)
-// {
-//     pos[i] = vec2((Math.random() * (1.0000 + 1.0000) - 1.0000).toFixed(4), (Math.random() * (0.0000 + 1.0000) - 1.0000).toFixed(4));
-// }
-// for (let i = 0; i < numTrees; i++)
-// {
-//     generateTree(trees[i], pos[i]);
-// }
 }
 
 // render the tree grammar
@@ -86,5 +55,24 @@ function drawTrees( tree, treeString, startPos ) {
             // execute the command
             tree.commands[character]( tree.params, startPos );
         }
+    }
+}
+
+function randTree( num ) {
+    switch (num) {
+        case 1:
+            return treeA;
+        case 2:
+            return treeB;
+        case 3:
+            return treeC;
+        case 4:
+            return treeD;
+        case 5:
+            return treeE;
+        case 6:
+            return treeF;
+        default:
+            return treeA;
     }
 }
