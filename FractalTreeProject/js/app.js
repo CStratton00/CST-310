@@ -1,3 +1,8 @@
+/**
+ * App Code
+ * File used to create the canvas to generate the forest and render the points 
+*/
+
 "use strict";
 
 var gl;
@@ -11,7 +16,7 @@ window.onload = function init() {
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     // --------------- Create Tree Points ---------------
-    generateForest( 5 );
+    generateForest( 13 );
 
     // --------------- WebGL Jazz ---------------
     //  Configure WebGL

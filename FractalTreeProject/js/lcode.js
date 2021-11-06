@@ -1,5 +1,20 @@
-// generate tree code
+/**
+ * L-System Code
+ * Functions used here to create a forest
+ * Forest created through generating trees at random posiitons
+ * Trees created through recursive iteration of the tree grammar
+*/
 
+// generate forest code
+function generateForest( numTrees ) {
+    // user inputs number of trees to populate the forest with
+    for (let i = 0; i < numTrees; i++) {
+        tree = randTree( Math.floor(Math.random() * 6) + 1 );
+        generateTree( tree, vec2(( Math.floor( Math.random() * ( 500 - ( -500 ) + 500 )) + ( -500 )) / 1000, -1 ));
+    }
+}
+
+// generate tree code
 function generateTree( treeType, startPos ) {
     var system = treeType;
 
@@ -12,16 +27,10 @@ function generateTree( treeType, startPos ) {
         // set the system state to the next generation
         systemState = renderAGeneration(system, systemState);
     }
+    console.log(systemState);
 
     // draw the tree using the tree type and string
     drawTrees( system, systemState, startPos );
-}
-
-function generateForest( numTrees ) {
-    for (let i = 0; i < numTrees; i++) {
-        tree = randTree(Math.floor(Math.random() * 6) + 1);
-        generateTree( tree, vec2(( Math.floor( Math.random() * ( 500 - ( -500 ) + 500 )) + ( -500 )) / 1000, -1 ));
-    }
 }
 
 // render the tree grammar
@@ -36,7 +45,6 @@ function renderAGeneration( system, previousGeneration ) {
     }
 
     nextGeneration += 'r';
-    
     return nextGeneration;
 }
 
@@ -58,6 +66,7 @@ function drawTrees( tree, treeString, startPos ) {
     }
 }
 
+// code to create a random tree
 function randTree( num ) {
     switch (num) {
         case 1:

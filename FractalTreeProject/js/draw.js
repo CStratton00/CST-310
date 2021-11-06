@@ -1,22 +1,30 @@
-const origin    = vec2(0, -1);
+/**
+ * Draw file
+ * Function to draw the trees based on the grammar
+ * Grammar rules called in lcode call the functions here
+ */
+
+const origin      = vec2(0, -1);
 const origHeading = vec2(0, 1);
 
-let currPos     = origin;
-let currHeading = origHeading;
+let currPos       = origin;
+let currHeading   = origHeading;
 
-let stack       = [];
-let points      = [];
+let stack         = [];
+let points        = [];
 
-let first = true;
+let first         = true;
 
 // call specific tree for segment length
 function F( segLen, startPos ) { // add the current position and updated position
     if( first ) {
         currPos = startPos;
-        first = false;
+        first   = false;
     }
+
     points.push( currPos );
-    let movement = scale( segLen * (Math.random() * (1.2000 - 0.7000) + 0.700).toFixed(4), currHeading );
+
+    let movement = scale( segLen * ( Math.random() * ( 1.2000 - 0.7000 ) + 0.700 ).toFixed( 4 ), currHeading );
     currPos = add( currPos, movement );
     
     points.push( currPos );
@@ -27,7 +35,7 @@ function f() {}
 
 // Apply a positive rotation about the X-axis of xrot degrees
 function plus( angle ) {
-    angle += Math.floor((Math.random() * 30) - 16);
+    angle   += Math.floor((Math.random() * 30) - 16);
     const x1 = currHeading[0];
     const y1 = currHeading[1];
 
@@ -39,7 +47,7 @@ function plus( angle ) {
 
 // Apply a negative rotation about the X-axis of xrot degrees
 function minus( angle ) {
-    angle += Math.floor((Math.random() * 30) - 16);
+    angle   += Math.floor((Math.random() * 30) - 16);
     const x1 = currHeading[0];
     const y1 = currHeading[1];
 
@@ -83,15 +91,3 @@ function reset() {
     first = true;
     currHeading = origHeading;
 }
-
-// const funcDict = {
-//     'F': F,
-//     'f': f,
-//     '+': plus,
-//     '-': minus,
-//     '&': ampersand,
-//     '^': carrot,
-//     '|': pipe,
-//     '[': lbrack,
-//     ']': rbrack
-// }

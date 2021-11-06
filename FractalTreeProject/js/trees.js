@@ -1,3 +1,8 @@
+/**
+ * Trees files
+ * Code for tree generation
+ */
+
 // tree functions that prints the fractal tree design
 const treeA = {
     params: {
