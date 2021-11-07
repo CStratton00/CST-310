@@ -19,8 +19,9 @@ window.onload = function init() {
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     // --------------- Create Tree Points ---------------
-    // generateTree( treeF, vec3( 0, 0, 0) );
-    generateForest( 4 );
+    // drawSphere( .07 );
+    generateTree( treeC, vec3( 0, 0, 0) );
+    // generateForest( 4 );
 
     // --------------- WebGL Jazz ---------------
     //  Configure WebGL

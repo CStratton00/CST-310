@@ -31,7 +31,7 @@ function F( segLen, startPos ) { // add the current position and updated positio
     // points.push( currPos );
 
     // draw the cylinder
-    drawCylinder( segLen, currPos, [0, heading], .2 / size );
+    drawCylinder( segLen, currPos, [0, heading], segLen / size );
 
     // update the current position
     // const movement = scale( segLen, currHeading );
@@ -56,6 +56,7 @@ function plus( angle ) {
     const z2 =  0; //Math.cos( radians(angle) ) * z1 - Math.sin( radians(angle) ) * z1;
 
     currHeading = vec3( x2, y2, z2 );
+    drawSphere( currPos, size );
 }
 
 // Apply a negative rotation about the X-axis of xrot degrees
@@ -70,6 +71,7 @@ function minus( angle ) {
     const z2 =  0; //Math.cos( radians(-angle) ) * z1 - Math.sin( radians(-angle) ) * z1;
 
     currHeading = vec3( x2, y2, z2 );
+    drawSphere( currPos, size );
 }
 
 // blank for now
@@ -95,6 +97,9 @@ function pipe() {
 // Push the current state of the turtle onto a pushdown stack
 function lbrack() {
     stack.push([currPos, currHeading]);
+
+    // scale the size of the branches as the tree grows
+    size += 0.25;
 }
 
 // Pop the state from the top of the turtle stack, and make it the current turtle stack
@@ -102,6 +107,9 @@ function rbrack() {
     const pop   = stack.pop();
     currPos     = pop[0];
     currHeading = pop[1];
+
+    // scale the size of the branches as the tree grows
+    size       -= 0.25;
 }
 
 function reset() {
@@ -127,6 +135,14 @@ function drawCylinder( len, tran, rot, scale ) {
     colors = colors.concat( Cylinder.TriangleVertexColors );
 }
 
-function drawSphere() {
-    // do stuff
+function drawSphere( tran, scale ) {
+    scale = .3;
+    const Sphere = new sphere();
+    Sphere.scale( scale, scale, scale );
+
+    Sphere.translate( 0, -1 / 3, 0 );
+    Sphere.translate( tran[0], tran[1], tran[2] );
+
+    points = points.concat( Sphere.TriangleVertices );
+    colors = colors.concat( Sphere.TriangleVertexColors );    
 }
