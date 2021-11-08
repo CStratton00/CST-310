@@ -7,8 +7,8 @@
 const treeA = {
     params: {
         angle: 25.7,
-        iteration: 5,
-        segLen: .008 // around .01-.02
+        iteration: 3,
+        segLen: .07 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -29,7 +29,9 @@ const treeA = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -37,8 +39,8 @@ const treeA = {
 const treeB = {
     params: {
         angle: 20,
-        iteration: 5,
-        segLen: .02 // around .01-.02
+        iteration: 3,
+        segLen: .13 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -59,7 +61,9 @@ const treeB = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -67,8 +71,8 @@ const treeB = {
 const treeC = {
     params: {
         angle: 22.5,
-        iteration: 4,
-        segLen: .02 // around .01-.02
+        iteration: 3,
+        segLen: .08 // around .01-.02
     },
     axiom: "F",
     rules: {
@@ -89,7 +93,9 @@ const treeC = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -97,8 +103,8 @@ const treeC = {
 const treeD = {
     params: {
         angle: 20,
-        iteration: 7,
-        segLen: .0075 // around .01-.02
+        iteration: 4,
+        segLen: .069// around .01-.02
     },
     axiom: "X",
     rules: {
@@ -120,7 +126,9 @@ const treeD = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -128,8 +136,8 @@ const treeD = {
 const treeE = {
     params: {
         angle: 25.7,
-        iteration: 7,
-        segLen: .007 // around .01-.02
+        iteration: 4,
+        segLen: .07 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -151,7 +159,9 @@ const treeE = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -159,8 +169,8 @@ const treeE = {
 const treeF = {
     params: {
         angle: 22.5,
-        iteration: 5,
-        segLen: .02 // around .01-.02
+        iteration: 3,
+        segLen: .1 // around .01-.02
     },
     axiom: "X",
     rules: {
@@ -182,18 +192,9 @@ const treeF = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
-
-// module.exports = {
-//     treeA,
-//     treeB,
-//     treeC,
-//     treeD,
-//     treeE,
-//     treeF,
-//     applyRule,
-//     renderAGeneration
-// }

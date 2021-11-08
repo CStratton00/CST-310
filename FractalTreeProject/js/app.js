@@ -6,6 +6,9 @@
 "use strict";
 
 var gl;
+var theta = [ 0, 0, 0 ];
+
+var thetaLoc;
 
 window.onload = function init() {
     // --------------- Create Canvas ---------------
@@ -16,7 +19,7 @@ window.onload = function init() {
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     // --------------- Create Tree Points ---------------
-    generateForest( 13 );
+    generateForest( 14 );
 
     // --------------- WebGL Jazz ---------------
     //  Configure WebGL
@@ -36,13 +39,25 @@ window.onload = function init() {
 
     // Associate out shader variables with our data buffers
     var vPosition = gl.getAttribLocation( program, "vPosition" );
-    gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
+    gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
+
+    // Load color data into the GPU
+    var cBuffer = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, cBuffer );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten( colors ), gl.STATIC_DRAW );
+
+    var vColor = gl.getAttribLocation( program, "vColor" );
+    gl.vertexAttribPointer( vColor, 4, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray( vColor );
+
+    thetaLoc = gl.getUniformLocation( program, "theta" );
 
     render();
 };
 
 function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.LINES, 0, points.length );
+    gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
+    gl.uniform3fv( thetaLoc, theta );
+    gl.drawArrays( gl.TRIANGLES, 0, points.length );
 }

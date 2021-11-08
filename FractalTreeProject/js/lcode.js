@@ -10,7 +10,7 @@ function generateForest( numTrees ) {
     // user inputs number of trees to populate the forest with
     for (let i = 0; i < numTrees; i++) {
         tree = randTree( Math.floor(Math.random() * 6) + 1 );
-        generateTree( tree, vec2(( Math.floor( Math.random() * ( 500 - ( -500 ) + 500 )) + ( -500 )) / 1000, -1 ));
+        generateTree( tree, vec3(( Math.floor( Math.random() * ( 500 - ( -500 ) + 500 )) + ( -500 )) / 1000, 0, 0 ));
     }
 }
 
@@ -27,7 +27,6 @@ function generateTree( treeType, startPos ) {
         // set the system state to the next generation
         systemState = renderAGeneration(system, systemState);
     }
-    console.log(systemState);
 
     // draw the tree using the tree type and string
     drawTrees( system, systemState, startPos );
