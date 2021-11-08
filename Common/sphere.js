@@ -33,9 +33,9 @@ function triangle(a, b, c) {
      sphereNormals.push([b[0],b[1], b[2]]);
      sphereNormals.push([c[0],c[1], c[2]]);
 
-     sphereVertexColors.push([(1+a[0])/2.0, (1+a[1])/2.0, (1+a[2])/2.0, 1.0]);
-     sphereVertexColors.push([(1+b[0])/2.0, (1+b[1])/2.0, (1+b[2])/2.0, 1.0]);
-     sphereVertexColors.push([(1+c[0])/2.0, (1+c[1])/2.0, (1+c[2])/2.0, 1.0]);
+     sphereVertexColors.push([.624, .412, .204, 1.0]);
+     sphereVertexColors.push([.624, .412, .204, 1.0]);
+     sphereVertexColors.push([.624, .412, .204, 1.0]);
 
      sphereTextureCoordinates.push([0.5*Math.acos(a[0])/Math.PI, 0.5*Math.asin(a[1]/Math.sqrt(1.0-a[0]*a[0]))/Math.PI]);
      sphereTextureCoordinates.push([0.5*Math.acos(b[0])/Math.PI, 0.5*Math.asin(b[1]/Math.sqrt(1.0-b[0]*b[0]))/Math.PI]);

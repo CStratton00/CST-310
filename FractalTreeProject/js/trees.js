@@ -29,7 +29,9 @@ const treeA = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -59,7 +61,9 @@ const treeB = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -89,7 +93,9 @@ const treeC = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -120,7 +126,9 @@ const treeD = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -151,7 +159,9 @@ const treeE = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
@@ -182,7 +192,9 @@ const treeF = {
         '^': carrot,
         '|': pipe,
         '[': lbrack,
-        ']': rbrack,
+        ']'( params ) {
+            rbrack( params.segLen );
+        },
         'r': reset
     }
 }
